@@ -1,0 +1,224 @@
+<title>Privacy Policy — Subnotes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Subnotes doesn't collect your data. Read how notes and tasks sync privately through your own iCloud account.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='12' cy='32' r='8' fill='%2334C759'/%3E%3Ccircle cx='32' cy='32' r='8' fill='%230A7CFF'/%3E%3Ccircle cx='52' cy='32' r='8' fill='%238E8E93'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --paper: #FDF6E3;
+    --ink: #3A342A;
+    --muted: #6B6252;
+    --card: #FFFFFF;
+    --card-border: #E7DFC9;
+    --rule: #E7DFC9;
+    --next: #2FA84F;
+    --soon: #0A7CFF;
+    --someday: #8E8E93;
+    --bg: #F7F3E7;
+
+    --font-display: ui-serif, "New York", Georgia, "Times New Roman", serif;
+    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #1E1B12;
+      --ink: #EDE6D3;
+      --muted: #A79E89;
+      --card: #262117;
+      --card-border: #3A3225;
+      --rule: #3A3225;
+      --next: #4CD671;
+      --soon: #4DA3FF;
+      --someday: #9A9A9E;
+      --bg: #16130C;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #1E1B12;
+    --ink: #EDE6D3;
+    --muted: #A79E89;
+    --card: #262117;
+    --card-border: #3A3225;
+    --rule: #3A3225;
+    --next: #4CD671;
+    --soon: #4DA3FF;
+    --someday: #9A9A9E;
+    --bg: #16130C;
+  }
+  :root[data-theme="light"] {
+    --paper: #FDF6E3;
+    --ink: #3A342A;
+    --muted: #6B6252;
+    --card: #FFFFFF;
+    --card-border: #E7DFC9;
+    --rule: #E7DFC9;
+    --next: #2FA84F;
+    --soon: #0A7CFF;
+    --someday: #8E8E93;
+    --bg: #F7F3E7;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  nav.top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 0;
+  }
+  .wordmark {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .dots { display: inline-flex; gap: 3px; }
+  .dots span {
+    width: 7px; height: 7px; border-radius: 50%; display: block;
+  }
+  .dots span:nth-child(1) { background: var(--next); }
+  .dots span:nth-child(2) { background: var(--soon); }
+  .dots span:nth-child(3) { background: var(--someday); }
+  .nav-back {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  main.legal {
+    padding: 20px 0 64px;
+    max-width: 640px;
+  }
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--next);
+    margin-bottom: 14px;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(30px, 4vw, 38px);
+    line-height: 1.15;
+    margin: 0 0 8px;
+    text-wrap: balance;
+  }
+  .updated {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 40px;
+  }
+  .tldr {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin: 0 0 40px;
+  }
+  .tldr .tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .tldr p { margin: 0; font-size: 15.5px; line-height: 1.6; }
+
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 21px;
+    margin: 36px 0 12px;
+  }
+  p, li {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink);
+  }
+  p.muted { color: var(--muted); }
+  ul { padding-left: 20px; margin: 0 0 16px; }
+  li { margin-bottom: 8px; }
+  a.inline { color: var(--soon); text-decoration: underline; text-underline-offset: 2px; }
+
+  footer {
+    padding: 28px 0 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: var(--muted);
+    border-top: 1px solid var(--rule);
+  }
+</style>
+
+<div class="wrap">
+  <nav class="top">
+    <a class="wordmark" href="/">
+      <span class="dots"><span></span><span></span><span></span></span>
+      Subnotes
+    </a>
+    <a class="nav-back" href="/">&larr; Back home</a>
+  </nav>
+
+  <main class="legal">
+    <div class="eyebrow">Privacy</div>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated July 29, 2026</p>
+
+    <div class="tldr">
+      <div class="tag">The short version</div>
+      <p>Subnotes doesn't collect your data. There's no account, no sign-up, and no server run by us. Your notes and tasks live in your own iCloud account and sync between your own devices through Apple's CloudKit. We never see them.</p>
+    </div>
+
+    <h2>What we don't do</h2>
+    <ul>
+      <li>No sign-up, account, or password</li>
+      <li>No analytics or tracking of any kind</li>
+      <li>No advertising, and no advertising identifiers</li>
+      <li>No third-party servers — the only server involved is Apple's iCloud, under your own Apple Account</li>
+    </ul>
+
+    <h2>What syncs, and where it lives</h2>
+    <p>Notes, tasks, and priorities are stored in your iCloud private database using Apple's CloudKit, scoped to your Apple Account. That data is encrypted and managed by Apple; Subnotes' developer has no access to it and no server that could see it. Apple's own privacy policy governs iCloud storage — see <a class="inline" href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">apple.com/legal/privacy</a>.</p>
+    <p>The Today widget and the Share Extension read the same notes and tasks through a local, on-device shared container. That data never leaves your device except through your own iCloud sync.</p>
+
+    <h2>Exporting and importing</h2>
+    <p>Subnotes can export and import your notes as Markdown files. Those files are handled entirely by the Files app or Finder on your own device — Subnotes has no server to upload them to, and no visibility into where you choose to save or share them.</p>
+
+    <h2>AI features</h2>
+    <p>Where Subnotes uses AI to help you think through your notes, that processing happens on-device using Apple's on-device intelligence frameworks. Your note content is not sent to Subnotes (we have no server to send it to) or to any third-party AI service.</p>
+
+    <h2>Children's privacy</h2>
+    <p class="muted">Subnotes does not knowingly collect personal information from anyone, including children — because it does not collect personal information from anyone, of any age.</p>
+
+    <h2>Changes to this policy</h2>
+    <p class="muted">If anything here changes — for example, if a future feature works differently — this page will be updated and the date above revised.</p>
+
+    <h2>Contact</h2>
+    <p>Questions about this policy? Write to <a class="inline" href="mailto:hello@subnotes.app">hello@subnotes.app</a>.</p>
+  </main>
+
+  <footer>
+    <span>© 2026 Subnotes</span>
+    <span>hello@subnotes.app</span>
+  </footer>
+</div>
