@@ -199,6 +199,87 @@
     line-height: 1.5;
     padding-bottom: 4px;
   }
+  .mock-dots {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    margin-top: 16px;
+  }
+  .mock-dot {
+    width: 7px; height: 7px;
+    padding: 0;
+    border-radius: 50%;
+    border: none;
+    background: var(--card-border);
+    cursor: pointer;
+  }
+  .mock-dot.active { background: var(--muted); }
+  .mock-toggle {
+    display: flex;
+    width: fit-content;
+    gap: 2px;
+    padding: 3px;
+    background: var(--bg);
+    border: 1px solid var(--card-border);
+    border-radius: 9px;
+    margin: 0 auto 18px;
+  }
+  .mock-toggle-btn {
+    font: inherit;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--muted);
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    padding: 5px 12px;
+    cursor: pointer;
+  }
+  .mock-toggle-btn.active {
+    background: var(--card);
+    color: var(--ink);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  }
+  .mock .task-circle {
+    width: 13px; height: 13px; border-radius: 50%;
+    margin-top: 3px; flex: 0 0 auto;
+    background: var(--card);
+    border: 2px solid var(--muted);
+    box-sizing: border-box;
+  }
+  .tasks-panel {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 12px 16px 4px;
+  }
+  .priority-label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 10px 0 3px;
+  }
+  .priority-label:first-child { margin-top: 0; }
+  .tasks-panel .task { padding: 5px 0; }
+  .tasks-panel .task-circle { width: 12px; height: 12px; }
+  .tasks-panel .subnote { font-size: 12px; padding-bottom: 2px; }
+
+  /* Both views occupy the same grid cell so the card's height is always
+     the taller of the two, regardless of which is currently shown —
+     avoids any size jump when toggling (visibility:hidden still
+     participates in layout sizing, unlike display:none/[hidden]). */
+  .mock-views { display: grid; }
+  .mock-view {
+    grid-area: 1 / 1;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .mock-view.active {
+    visibility: visible;
+    pointer-events: auto;
+  }
 
   /* ---------- Features ---------- */
   section.features { padding: 56px 0; }
@@ -316,7 +397,7 @@
     <div>
       <div class="eyebrow">Coming soon to iPhone, iPad &amp; Mac</div>
       <h1>Write it down. Some of it gets done.</h1>
-      <p class="lede">Subnotes is a thinking space for creative people who care about getting things done — a notebook that quietly knows which lines are just thoughts, and which ones are tasks.</p>
+      <p class="lede">Subnotes is a thinking space for creative people who care about getting things done — a notebook that knows which lines are just thoughts, and which ones are tasks.</p>
       <div class="cta-row">
         <a class="btn-primary" href="mailto:hello@subnotes.app?subject=Notify%20me%20when%20Subnotes%20launches">
           Notify me at launch
@@ -325,28 +406,66 @@
       </div>
     </div>
 
-    <div class="mock" aria-hidden="true">
-      <div class="heading">Kitchen Remodel</div>
-      <div class="prose">Talked to the contractor today — he thinks we should widen the doorway before the cabinets arrive.</div>
-      <div class="task">
-        <span class="dot" style="background: var(--next);"></span>
-        <span class="task-text">Call contractor about doorway width</span>
+    <div class="mock">
+      <div class="mock-toggle" role="tablist" aria-label="Preview view">
+        <button type="button" class="mock-toggle-btn active" data-view="note" role="tab" aria-selected="true">Note</button>
+        <button type="button" class="mock-toggle-btn" data-view="tasks" role="tab" aria-selected="false">Tasks</button>
       </div>
-      <div class="subnote">He's free Tuesday or Thursday afternoon</div>
-      <div class="task">
-        <span class="dot" style="background: var(--soon);"></span>
-        <span class="task-text">Pick cabinet hardware</span>
+
+      <div class="mock-views">
+      <div class="mock-view active" data-view="note">
+        <div class="heading">Kitchen Remodel</div>
+        <div class="prose">Talked to the contractor today — he thinks we should widen the doorway before the cabinets arrive.</div>
+        <div class="task">
+          <span class="dot" style="background: var(--next);"></span>
+          <span class="task-text">Call contractor about doorway width</span>
+        </div>
+        <div class="subnote">He's free Tuesday or Thursday afternoon</div>
+        <div class="task">
+          <span class="dot" style="background: var(--soon);"></span>
+          <span class="task-text">Pick cabinet hardware</span>
+        </div>
+        <div class="task">
+          <span class="dot" style="background: var(--someday);"></span>
+          <span class="task-text">Look into a wine fridge</span>
+        </div>
       </div>
-      <div class="task">
-        <span class="dot" style="background: var(--someday);"></span>
-        <span class="task-text">Look into a wine fridge</span>
+
+      <div class="mock-view" data-view="tasks">
+        <div class="heading">Kitchen Remodel</div>
+
+        <div class="tasks-panel">
+          <div class="priority-label">Next</div>
+          <div class="task">
+            <span class="task-circle" style="border-color: var(--next);"></span>
+            <span class="task-text">Call contractor about doorway width</span>
+          </div>
+          <div class="subnote">He's free Tuesday or Thursday afternoon</div>
+
+          <div class="priority-label">Soon</div>
+          <div class="task">
+            <span class="task-circle" style="border-color: var(--soon);"></span>
+            <span class="task-text">Pick cabinet hardware</span>
+          </div>
+
+          <div class="priority-label">Someday</div>
+          <div class="task">
+            <span class="task-circle" style="border-color: var(--someday);"></span>
+            <span class="task-text">Look into a wine fridge</span>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="mock-dots">
+        <button type="button" class="mock-dot active" data-view="note" aria-label="Show note view"></button>
+        <button type="button" class="mock-dot" data-view="tasks" aria-label="Show tasks view"></button>
       </div>
     </div>
   </header>
 
   <section class="features">
     <h2 class="section-head">Simplicity is the whole idea.</h2>
-    <p class="section-sub">Subnotes isn't a task manager with notes bolted on, or a notes app pretending to manage tasks. It's one document, written the way you actually think.</p>
 
     <div class="feature-grid">
       <div class="feature-card">
@@ -359,8 +478,8 @@
         <h3>Editing a task is just editing text</h3>
         <p>No forms, no modal dialogs, no menus to hunt through. Projects stay up to date because updating them is as easy as fixing a typo.</p>
       </div>
-      <div class="feature-card">
-        <div class="tag"><span class="dot" style="background: var(--someday);"></span>Think it through</div>
+      <div class="feature-card" style="opacity: 0.6;">
+        <div class="tag"><span class="dot" style="background: var(--someday);"></span>Coming soon</div>
         <h3>Let AI help you clarify what matters</h3>
         <p>When you're not sure what's next, Subnotes can help you think it through — using the context you've already written, not a blank chat window.</p>
       </div>
@@ -387,6 +506,28 @@
 
   <footer>
     <span>© 2026 Subnotes</span>
-    <span><a href="/privacy.html">Privacy</a> &middot; hello@subnotes.app</span>
+    <span><a href="/privacy.html">Privacy</a> &middot; <a href="/support.html">Support</a> &middot; hello@subnotes.app</span>
   </footer>
 </div>
+
+<script>
+  function setMockView(mock, view) {
+    mock.querySelectorAll('.mock-toggle-btn').forEach(function (b) {
+      var isMatch = b.dataset.view === view;
+      b.classList.toggle('active', isMatch);
+      b.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+    });
+    mock.querySelectorAll('.mock-dot').forEach(function (d) {
+      d.classList.toggle('active', d.dataset.view === view);
+    });
+    mock.querySelectorAll('.mock-view').forEach(function (v) {
+      v.classList.toggle('active', v.dataset.view === view);
+    });
+  }
+
+  document.querySelectorAll('.mock-toggle-btn, .mock-dot').forEach(function (control) {
+    control.addEventListener('click', function () {
+      setMockView(control.closest('.mock'), control.dataset.view);
+    });
+  });
+</script>

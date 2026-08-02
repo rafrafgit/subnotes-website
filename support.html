@@ -1,6 +1,6 @@
-<title>Privacy Policy — Subnotes</title>
+<title>Support — Subnotes</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Subnotes doesn't collect your data. Read how notes and tasks sync privately through your own iCloud account.">
+<meta name="description" content="Get help with Subnotes — backups, sync, and how to reach us.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='12' cy='32' r='8' fill='%2334C759'/%3E%3Ccircle cx='32' cy='32' r='8' fill='%230A7CFF'/%3E%3Ccircle cx='52' cy='32' r='8' fill='%238E8E93'/%3E%3C/svg%3E">
 <style>
   :root {
@@ -159,6 +159,20 @@
   li { margin-bottom: 8px; }
   a.inline { color: var(--soon); text-decoration: underline; text-underline-offset: 2px; }
 
+  .faq-item { margin: 0 0 28px; }
+  .faq-item h2 { margin: 0 0 8px; font-size: 17px; }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--soon);
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 12px 22px;
+    border-radius: 10px;
+    text-decoration: none;
+  }
+
   footer {
     padding: 28px 0 48px;
     display: flex;
@@ -180,45 +194,44 @@
   </nav>
 
   <main class="legal">
-    <div class="eyebrow">Privacy</div>
-    <h1>Privacy Policy</h1>
-    <p class="updated">Last updated July 29, 2026</p>
+    <div class="eyebrow">Support</div>
+    <h1>Support</h1>
 
     <div class="tldr">
-      <div class="tag">The short version</div>
-      <p>Subnotes doesn't collect your data. There's no account, no sign-up, and no server run by us. Your notes and tasks live in your own iCloud account and sync between your own devices through Apple's CloudKit. We never see them.</p>
+      <div class="tag">Need help fast?</div>
+      <p>Email <a class="inline" href="mailto:hello@subnotes.app">hello@subnotes.app</a> — bug reports, feature requests, and general questions are all welcome. We read every message.</p>
     </div>
 
-    <h2>What we don't do</h2>
-    <ul>
-      <li>No sign-up, account, or password</li>
-      <li>No analytics or tracking of any kind</li>
-      <li>No advertising, and no advertising identifiers</li>
-      <li>No third-party servers — the only server involved is Apple's iCloud, under your own Apple Account</li>
-    </ul>
+    <h2 style="margin-top:0;">Frequently asked questions</h2>
 
-    <h2>What syncs, and where it lives</h2>
-    <p>Notes, tasks, and priorities are stored in your iCloud private database using Apple's CloudKit, scoped to your Apple Account. That data is encrypted and managed by Apple; Subnotes' developer has no access to it and no server that could see it. Apple's own privacy policy governs iCloud storage — see <a class="inline" href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">apple.com/legal/privacy</a>.</p>
-    <p>The Today widget and the Share Extension read the same notes and tasks through a local, on-device shared container. That data never leaves your device except through your own iCloud sync.</p>
+    <div class="faq-item">
+      <h2>Do I need an account?</h2>
+      <p>No. Subnotes has no sign-up or password — it uses the iCloud account already signed into your device. Your notes and tasks sync privately between your own devices through your own iCloud, and nobody else (including us) can see them.</p>
+    </div>
 
-    <h2>Exporting and importing</h2>
-    <p>Subnotes can export and import your notes as Markdown files. Those files are handled entirely by the Files app or Finder on your own device — Subnotes has no server to upload them to, and no visibility into where you choose to save or share them.</p>
+    <div class="faq-item">
+      <h2>Is my data backed up?</h2>
+      <p>On Mac, Subnotes automatically saves a local backup of all your notes to <code>~/Documents/Subnotes Backups</code> every time your Mac wakes from sleep, keeping the 7 most recent. You can restore from one of these anytime via <strong>File &rarr; Restore from Backup&hellip;</strong></p>
+      <p>On iPhone and iPad, backups are manual: from the Notes tab, use <strong>Export all notes</strong> to save everything as a single plain-text file (compatible with Markdown), which you can then store anywhere you like — Files, email, AirDrop, etc.</p>
+    </div>
 
-    <h2>AI features</h2>
-    <p>Where Subnotes uses AI to help you think through your notes, that processing happens on-device using Apple's on-device intelligence frameworks. Your note content is not sent to Subnotes (we have no server to send it to) or to any third-party AI service.</p>
+    <div class="faq-item">
+      <h2>How does sync work between my devices?</h2>
+      <p>Through your own private iCloud account via Apple's CloudKit — the same technology Apple's own apps use. There's no server run by us in between; see our <a class="inline" href="/privacy.html">Privacy Policy</a> for details.</p>
+    </div>
 
-    <h2>Children's privacy</h2>
-    <p class="muted">Subnotes does not knowingly collect personal information from anyone, including children — because it does not collect personal information from anyone, of any age.</p>
+    <div class="faq-item">
+      <h2>I found a bug, or have an idea for a feature</h2>
+      <p>We'd love to hear it — email <a class="inline" href="mailto:hello@subnotes.app">hello@subnotes.app</a> with as much detail as you can (what you expected, what happened instead, and your device/OS version for bugs).</p>
+    </div>
 
-    <h2>Changes to this policy</h2>
-    <p class="muted">If anything here changes — for example, if a future feature works differently — this page will be updated and the date above revised.</p>
-
-    <h2>Contact</h2>
-    <p>Questions about this policy? Write to <a class="inline" href="mailto:hello@subnotes.app">hello@subnotes.app</a>.</p>
+    <h2>Still stuck?</h2>
+    <p>Write to us directly and we'll get back to you.</p>
+    <a class="btn-primary" href="mailto:hello@subnotes.app">Email hello@subnotes.app</a>
   </main>
 
   <footer>
     <span>© 2026 Subnotes</span>
-    <span><a href="/support.html">Support</a> &middot; hello@subnotes.app</span>
+    <span><a href="/privacy.html">Privacy</a> &middot; hello@subnotes.app</span>
   </footer>
 </div>
