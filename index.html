@@ -5,6 +5,10 @@
      same left-to-right dot row as the nav wordmark (green/blue/gray), just
      scaled up, so the tab icon matches the on-page brand mark exactly. -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='12' cy='32' r='8' fill='%2334C759'/%3E%3Ccircle cx='32' cy='32' r='8' fill='%230A7CFF'/%3E%3Ccircle cx='52' cy='32' r='8' fill='%238E8E93'/%3E%3C/svg%3E">
+<!-- iOS "Add to Home Screen"/bookmarks ignores rel="icon" SVGs and needs
+     its own PNG — same 3-dot mark, rendered on the site's --paper
+     background since a transparent icon renders inconsistently there. -->
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <style>
   :root {
     --paper: #FDF6E3;
