@@ -92,6 +92,7 @@
     font-size: 19px;
     font-weight: 600;
     letter-spacing: -0.01em;
+    margin-bottom: 14px;
   }
   .dots { display: inline-flex; gap: 3px; }
   .dots span {
@@ -285,6 +286,42 @@
     pointer-events: auto;
   }
 
+  /* ---------- Feelings (problem/solution, as a voice, not a table) ---------- */
+  section.feelings {
+    padding: 12px 0 68px;
+    max-width: 30rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .feelings-intro {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--muted);
+    margin: 0 0 44px;
+  }
+  .feel-pair { margin-bottom: 40px; }
+  .feel-pair:last-child { margin-bottom: 0; }
+  .feel-ache {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(16px, 2.1vw, 19px);
+    color: var(--muted);
+    line-height: 1.5;
+    margin: 0 0 10px;
+    text-wrap: balance;
+  }
+  .feel-ease {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(21px, 2.8vw, 26px);
+    color: var(--ink);
+    line-height: 1.35;
+    margin: 0;
+    text-wrap: balance;
+  }
+
   /* ---------- Features ---------- */
   section.features { padding: 56px 0; }
   .section-head {
@@ -390,18 +427,22 @@
 
 <div class="wrap">
   <nav class="top">
-    <div class="wordmark">
-      <span class="dots"><span></span><span></span><span></span></span>
-      Subnotes
-    </div>
-    <a class="nav-cta" href="https://apps.apple.com/us/app/subnotes/id6787954455">Get the app</a>
+    
   </nav>
+  
+  <section class="feelings">
+    <p class="feelings-intro">Some days don't go to plan.</p>
+    <div class="feel-pair">
+      <p class="feel-ache">Life is unpredictable and you are not a machine.</p>
+      <p class="feel-ache">Forcing the day to look productive just adds guilt when it doesn't.</p>
+    </div>
+  </section>
 
   <header class="hero">
     <div>
-      <div class="eyebrow">Available now on iPhone, iPad &amp; Mac</div>
+        <div class="wordmark"><span class="dots"><span></span><span></span><span></span></span>Subnotes</div>
       <h1>Write it down. Some of it gets done.</h1>
-      <p class="lede">Subnotes is a thinking space for creative people who care about getting things done — a notebook that knows which lines are just thoughts, and which ones are tasks.</p>
+      <p class="lede">Subnotes turns notes into to-do lists, as you write.</p>
       <div class="cta-row">
         <a class="btn-primary" href="https://apps.apple.com/us/app/subnotes/id6787954455">
           Download on the App Store
@@ -409,13 +450,11 @@
         <span class="cta-note">Free. One app, universal across iPhone, iPad &amp; Mac.</span>
       </div>
     </div>
-
     <div class="mock">
       <div class="mock-toggle" role="tablist" aria-label="Preview view">
-        <button type="button" class="mock-toggle-btn active" data-view="note" role="tab" aria-selected="true">Note</button>
+        <button type="button" class="mock-toggle-btn active" data-view="note" role="tab" aria-selected="true">Notes</button>
         <button type="button" class="mock-toggle-btn" data-view="tasks" role="tab" aria-selected="false">Tasks</button>
       </div>
-
       <div class="mock-views">
       <div class="mock-view active" data-view="note">
         <div class="heading">Kitchen Remodel</div>
@@ -434,7 +473,6 @@
           <span class="task-text">Pick cabinet hardware</span>
         </div>
       </div>
-
       <div class="mock-view" data-view="tasks">
         <div class="heading">Kitchen Remodel</div>
 
@@ -460,45 +498,43 @@
         </div>
       </div>
       </div>
-
       <div class="mock-dots">
         <button type="button" class="mock-dot active" data-view="note" aria-label="Show note view"></button>
         <button type="button" class="mock-dot" data-view="tasks" aria-label="Show tasks view"></button>
       </div>
     </div>
+    
   </header>
 
-  <section class="features">
-    <h2 class="section-head">Simplicity is the whole idea.</h2>
 
+
+  <section class="features">
+    <h2 class="section-head">Plain text, real tasks</h2>
     <div class="feature-grid">
       <div class="feature-card">
-        <div class="tag"><span class="dot" style="background: var(--next);"></span>Notebook</div>
-        <h3>Thoughts and tasks, side by side</h3>
-        <p>Jot things down like you would in a paper notebook — then switch views to see everything organized by priority, automatically.</p>
+        <div class="tag"><span class="dot" style="background: var(--next);"></span>Freedom to write</div>
+        <h3>Notes and tasks side by side</h3>
+        <p>In Subnotes, your notes and your to-do list are finally the same document.</p>
       </div>
       <div class="feature-card">
-        <div class="tag"><span class="dot" style="background: var(--soon);"></span>Plain Text</div>
-        <h3>Nothing to lock you in</h3>
-        <p>Note-taking and planning are deeply personal — so everything is stored as plain text, not a proprietary format. Projects stay up to date because updating them is as easy as fixing a typo.</p>
-      </div>
-      <!--<div class="feature-card" style="opacity: 0.6;">
-        <div class="tag"><span class="dot" style="background: var(--someday);"></span>Coming soon</div>
-        <h3>Let AI help you clarify what matters</h3>
-        <p>When you're not sure what's next, Subnotes can help you think it through — using the context you've already written, not a blank chat window.</p>
-      </div>-->
-      <div class="feature-card">
-        <div class="tag"><span class="dot" style="background: var(--someday);"></span>Templates</div>
-        <h3>Get started quickly</h3>
-        <p>Templates for weekly reviews, meeting notes, habit tracking, trip planning, and more.</p>
+        <div class="tag"><span class="dot" style="background: var(--next);"></span>Confident to deliver</div>
+        <h3>A more human way to get things done</h3>
+        <p>Organize tasks by what should happen Next or Soon, and the few things that really need to be done today. No overwhelm. No guilt of failing to deliver.</p>
       </div>
       <div class="feature-card">
-        <div class="tag"><span class="dot" style="background: var(--someday);"></span>Private</div>
-        <h3>No signup required</h3>
-        <p>Syncs privately over your own iCloud account: nothing to sign up for, nothing to hand over. On iPhone, iPad &amp; Mac</p>
+        <div class="tag"><span class="dot" style="background: var(--next);"></span>Plain text</div>
+        <h3>Nothing to learn or lock you in</h3>
+        <p>Note-taking and planning are deeply personal — so everything is stored as plain text, not a proprietary format.</p>
+      </div>
+      <div class="feature-card">
+        <div class="tag"><span class="dot" style="background: var(--next);"></span>Private</div>
+        <h3>Private on iPhone, iPad &amp; Mac</h3>
+        <p>Syncs privately over your own iCloud account: nothing to sign up for, nothing to hand over.</p>
       </div>
     </div>
   </section>
+  
+  
 
   <div class="badges">
     <span class="badge">No signup required</span>
@@ -509,7 +545,6 @@
   </div>
 
   <section class="closing">
-    <h2>Ready when you are.</h2>
     <p>Subnotes is free on the App Store — one download, works on iPhone, iPad &amp; Mac.</p>
     <a class="btn-primary" href="https://apps.apple.com/us/app/subnotes/id6787954455">Download on the App Store</a>
   </section>
