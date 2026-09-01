@@ -1,0 +1,269 @@
+<title>A gentler way to make a to-do list — Subnotes for ADHD</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Write it down. Some of it gets done. Subnotes is a gentler ADHD-friendly to-do list — it turns your notes into tasks without the overwhelm of a rigid planning system. Free on the App Store for iPhone, iPad &amp; Mac.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='12' cy='32' r='8' fill='%2334C759'/%3E%3Ccircle cx='32' cy='32' r='8' fill='%230A7CFF'/%3E%3Ccircle cx='52' cy='32' r='8' fill='%238E8E93'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+  :root {
+    --paper: #FDF6E3;
+    --ink: #3A342A;
+    --muted: #6B6252;
+    --card: #FFFFFF;
+    --card-border: #E7DFC9;
+    --rule: #E7DFC9;
+    --next: #2FA84F;
+    --soon: #0A7CFF;
+    --someday: #8E8E93;
+    --bg: #F7F3E7;
+
+    --font-display: ui-serif, "New York", Georgia, "Times New Roman", serif;
+    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #1E1B12; --ink: #EDE6D3; --muted: #A79E89; --card: #262117;
+      --card-border: #3A3225; --rule: #3A3225; --next: #4CD671; --soon: #4DA3FF;
+      --someday: #9A9A9E; --bg: #16130C;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #1E1B12; --ink: #EDE6D3; --muted: #A79E89; --card: #262117;
+    --card-border: #3A3225; --rule: #3A3225; --next: #4CD671; --soon: #4DA3FF;
+    --someday: #9A9A9E; --bg: #16130C;
+  }
+  :root[data-theme="light"] {
+    --paper: #FDF6E3; --ink: #3A342A; --muted: #6B6252; --card: #FFFFFF;
+    --card-border: #E7DFC9; --rule: #E7DFC9; --next: #2FA84F; --soon: #0A7CFF;
+    --someday: #8E8E93; --bg: #F7F3E7;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  nav.top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 0;
+  }
+  .wordmark {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+  }
+  .dots { display: inline-flex; gap: 3px; }
+  .dots span { width: 7px; height: 7px; border-radius: 50%; display: block; }
+  .dots span:nth-child(1) { background: var(--next); }
+  .dots span:nth-child(2) { background: var(--soon); }
+  .dots span:nth-child(3) { background: var(--someday); }
+  .nav-cta {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: var(--ink);
+    color: var(--bg);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--next);
+    margin: 20px 0 14px;
+    text-align: center;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(28px, 4.6vw, 40px);
+    line-height: 1.15;
+    margin: 0 0 8px;
+    text-wrap: balance;
+    text-align: center;
+    max-width: 22ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Same feelings treatment as the homepage — reused verbatim so the
+     problem statement stays word-for-word identical between the two. */
+  section.feelings {
+    padding: 24px 0 60px;
+    max-width: 30rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .feelings-intro {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--muted);
+    margin: 0 0 44px;
+  }
+  .feel-pair { margin-bottom: 40px; }
+  .feel-pair:last-child { margin-bottom: 0; }
+  .feel-ache {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(16px, 2.1vw, 19px);
+    color: var(--muted);
+    line-height: 1.5;
+    margin: 0 0 10px;
+    text-wrap: balance;
+  }
+
+  .post { max-width: 640px; margin: 0 auto; padding: 0 0 8px; }
+  .solution-head {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(24px, 3.4vw, 30px);
+    margin: 0 0 12px;
+    text-wrap: balance;
+    text-align: center;
+  }
+  .post p.body-text {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--muted);
+    margin: 0 auto 22px;
+    max-width: 52ch;
+    text-align: center;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+  }
+  @media (max-width: 560px) {
+    .feature-grid { grid-template-columns: 1fr; }
+  }
+  .feature-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 24px;
+  }
+  .feature-card .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .feature-card .tag .dot { width: 7px; height: 7px; border-radius: 50%; }
+  .feature-card h3 { font-size: 17px; margin: 0 0 8px; font-weight: 600; }
+  .feature-card p { font-size: 14.5px; line-height: 1.6; color: var(--muted); margin: 0; }
+
+  .cta-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 44px;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--next);
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 13px 22px;
+    border-radius: 10px;
+    text-decoration: none;
+  }
+  .cta-note { font-size: 13px; color: var(--muted); }
+
+  footer {
+    padding: 40px 0 48px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: var(--muted);
+    border-top: 1px solid var(--rule);
+  }
+</style>
+
+<div class="wrap">
+  <nav class="top">
+    <a class="wordmark" href="/"><span class="dots"><span></span><span></span><span></span></span>Subnotes</a>
+    <a class="nav-cta" href="https://apps.apple.com/app/apple-store/id6787954455?pt=128931142&amp;ct=adhd&amp;mt=8">Get the app</a>
+  </nav>
+
+  <p class="eyebrow">For people who overplan and get overwhelmed</p>
+  <h1>A gentler way to make a to-do list</h1>
+
+  <section class="feelings">
+    <p class="feelings-intro">Some days don't go to plan.</p>
+    <div class="feel-pair">
+      <p class="feel-ache">Life is unpredictable and you are not a machine.</p>
+      <p class="feel-ache">Forcing the day to look productive just adds guilt when it doesn't.</p>
+    </div>
+  </section>
+
+  <article class="post">
+    <h2 class="solution-head">Write it down. Some of it gets done.</h2>
+    <p class="body-text">Built for ADHD brains that overplan and then get overwhelmed by the plan — Subnotes turns your notes into to-do lists, as you write. Some things need to be done Today but most things could be done Next or Soon.</p>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="tag"><span class="dot" style="background: var(--next);"></span>Freedom to write</div>
+        <h3>Notes and tasks side by side</h3>
+        <p>In Subnotes, your notes and your to-do list are finally the same document.</p>
+      </div>
+      <div class="feature-card">
+        <div class="tag"><span class="dot" style="background: var(--next);"></span>Confident to deliver</div>
+        <h3>A gentler way to get things done</h3>
+        <p>Organize tasks by what should happen Next or Soon, and the few things that really need to be done today. No overwhelm. No guilt of failing to deliver.</p>
+      </div>
+      <div class="feature-card">
+        <div class="tag"><span class="dot" style="background: var(--next);"></span>Plain text</div>
+        <h3>Nothing to learn or lock you in</h3>
+        <p>Note-taking and planning are deeply personal — so everything is stored as plain text, not a proprietary format.</p>
+      </div>
+      <div class="feature-card">
+        <div class="tag"><span class="dot" style="background: var(--next);"></span>Private</div>
+        <h3>Private on iPhone, iPad &amp; Mac</h3>
+        <p>Syncs privately over your own iCloud account: nothing to sign up for, nothing to hand over.</p>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <a class="btn-primary" href="https://apps.apple.com/app/apple-store/id6787954455?pt=128931142&amp;ct=adhd&amp;mt=8">Download on the App Store</a>
+      <span class="cta-note">Free. One app, universal across iPhone, iPad &amp; Mac.</span>
+    </div>
+  </article>
+
+  <footer>
+    <span>© 2026 Subnotes</span>
+    <span><a href="/privacy.html">Privacy</a> &middot; <a href="/support.html">Support</a> &middot; hello@subnotes.app</span>
+  </footer>
+</div>
