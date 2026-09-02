@@ -1,6 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
 <title>Subnotes — Write it down. Some of it gets done.</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Write it down. Some of it gets done. Subnotes is a thinking space for creative people — notes and tasks together, syncing privately over iCloud. Free on the App Store for iPhone, iPad &amp; Mac.">
+<meta name="description" content="Write it down. Some of it gets done. Subnotes turns your notes into to-do lists as you write. Free on the App Store for iPhone, iPad &amp; Mac.">
+<link rel="canonical" href="https://subnotes.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Subnotes">
+<meta property="og:url" content="https://subnotes.app/">
+<meta property="og:title" content="Subnotes — Write it down. Some of it gets done.">
+<meta property="og:description" content="Subnotes turns your notes into to-do lists as you write. Free on the App Store for iPhone, iPad &amp; Mac.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Subnotes — Write it down. Some of it gets done.">
+<meta name="twitter:description" content="Subnotes turns your notes into to-do lists as you write. Free on the App Store for iPhone, iPad &amp; Mac.">
 <!-- Real favicon for when this is actually deployed (not just previewed here) —
      same left-to-right dot row as the nav wordmark (green/blue/gray), just
      scaled up, so the tab icon matches the on-page brand mark exactly. -->
@@ -9,6 +22,59 @@
      its own PNG — same 3-dot mark, rendered on the site's --paper
      background since a transparent icon renders inconsistently there. -->
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<!-- JSON-LD: lets search engines and AI answer engines pick up structured
+     facts about the app (price, platforms, category) directly, rather than
+     only inferring them from prose. No aggregateRating — fabricating one
+     would be misleading; add it for real once there's an actual review
+     count worth citing. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Subnotes",
+  "url": "https://subnotes.app/",
+  "description": "Subnotes turns your notes into to-do lists as you write. Free on the App Store for iPhone, iPad & Mac.",
+  "applicationCategory": "ProductivityApplication",
+  "operatingSystem": "iOS, iPadOS, macOS",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is Subnotes free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — one download on the App Store, free, and it works across iPhone, iPad & Mac."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Subnotes sync between my devices?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Privately, over your own iCloud account — no signup, no server that can see your notes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I get my notes out of Subnotes if I ever want to?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Always — everything is stored as plain text, not a proprietary format, so nothing is locked in."
+      }
+    }
+  ]
+}
+</script>
 <style>
   :root {
     --paper: #FDF6E3;
@@ -92,7 +158,7 @@
     font-size: 19px;
     font-weight: 600;
     letter-spacing: -0.01em;
-    margin-bottom: 14px;
+    text-decoration: none;
   }
   .dots { display: inline-flex; gap: 3px; }
   .dots span {
@@ -356,6 +422,23 @@
     color: var(--muted);
   }
 
+  /* ---------- FAQ ---------- */
+  section.faq { padding: 8px 0 40px; }
+  .faq-item { padding: 18px 0; border-top: 1px solid var(--rule); }
+  .faq-item h3 {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0 0 6px;
+  }
+  .faq-item p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0;
+    max-width: 60ch;
+  }
+
   /* ---------- Closing CTA ---------- */
   section.closing {
     background: var(--ink);
@@ -389,15 +472,16 @@
     border-top: 1px solid var(--rule);
   }
 </style>
+</head>
+<body>
 
 <div class="wrap">
   <nav class="top">
-    
+    <a class="wordmark" href="/"><span class="dots"><span></span><span></span><span></span></span>Subnotes</a>
   </nav>
-  
+
   <header class="hero">
     <div>
-        <div class="wordmark"><span class="dots"><span></span><span></span><span></span></span>Subnotes</div>
       <h1>Write it down. Some of it gets done.</h1>
       <p class="lede">Subnotes turns notes into to-do lists, as you write.</p>
       <div class="cta-row">
@@ -475,8 +559,8 @@
       </div>
       <div class="feature-card">
         <div class="tag"><span class="dot" style="background: var(--next);"></span>Confident to deliver</div>
-        <h3>A more human way to get things done</h3>
-        <p>Organize tasks by what should happen Next or Soon, and the few things that really need to be done today. No overwhelm. No guilt of failing to deliver.</p>
+        <h3>You decide what Today looks like</h3>
+        <p>Organize tasks by what happens Next or Soon, and the few things that really need to be done Today.</p>
       </div>
       <div class="feature-card">
         <div class="tag"><span class="dot" style="background: var(--next);"></span>Plain text</div>
@@ -500,6 +584,22 @@
     <span class="badge">Always plain text</span>
     <span class="badge">Markdown import / export</span>
   </div>
+
+  <section class="faq">
+    <h2 class="section-head">Common questions</h2>
+    <div class="faq-item">
+      <h3>Is Subnotes free?</h3>
+      <p>Yes — one download on the App Store, free, and it works across iPhone, iPad &amp; Mac.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How does Subnotes sync between my devices?</h3>
+      <p>Privately, over your own iCloud account — no signup, no server that can see your notes.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I get my notes out of Subnotes if I ever want to?</h3>
+      <p>Always — everything is stored as plain text, not a proprietary format, so nothing is locked in.</p>
+    </div>
+  </section>
 
   <section class="closing">
     <p>Subnotes is free on the App Store — one download, works on iPhone, iPad &amp; Mac.</p>
@@ -533,3 +633,5 @@
     });
   });
 </script>
+</body>
+</html>
