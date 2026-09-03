@@ -436,7 +436,10 @@
     line-height: 1.6;
     color: var(--muted);
     margin: 0;
-    max-width: 60ch;
+    /* 72ch, not 60 — the "Is Subnotes free?" answer is long enough at 60ch
+       to wrap right after "iPhone, iPad &" and strand "Mac." alone on its
+       own line. */
+    max-width: 72ch;
   }
 
   /* ---------- Closing CTA ---------- */
