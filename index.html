@@ -393,6 +393,11 @@
     padding: 28px 0;
   }
   .benefit + .benefit { border-top: 1px solid var(--rule); }
+  /* Alternate which side the screen sits on. Done with `order` rather than by
+     reordering the markup, so every row still reads claim-then-evidence to a
+     screen reader and in the stacked layout below. */
+  .benefit:nth-child(even) > :first-child { order: 2; }
+  .benefit:nth-child(even) > :last-child { order: 1; }
   /* Kept from the old cards, re-scoped to the row — same eyebrow treatment,
      so the section still reads in the site's own voice. */
   .benefit .tag {
@@ -454,6 +459,11 @@
   }
   @media (max-width: 760px) {
     .benefit { grid-template-columns: 1fr; gap: 24px; }
+    /* Stacked, there are no sides to alternate — and the claim has to come
+       first, so the flip above is undone rather than left to reverse the
+       reading order. */
+    .benefit:nth-child(even) > :first-child,
+    .benefit:nth-child(even) > :last-child { order: 0; }
   }
   .badges {
     display: flex;
