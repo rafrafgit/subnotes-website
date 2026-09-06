@@ -87,6 +87,14 @@
     --soon: #0A7CFF;
     --someday: #8E8E93;
     --bg: #F7F3E7;
+    /* The screenshots are light-mode captures. On the light theme they sit as
+       they are; on dark they'd glare, so each theme block sets its own value
+       rather than the images being edited per theme. */
+    --shot-filter: none;
+    /* The panel each screenshot stands on. Deliberately not --card: a white
+       screenshot on a white card has no edge, and the edge is what says
+       "this is a screen". */
+    --shot-panel: #F0E9D6;
 
     --font-display: ui-serif, "New York", Georgia, "Times New Roman", serif;
     --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
@@ -104,6 +112,8 @@
       --soon: #4DA3FF;
       --someday: #9A9A9E;
       --bg: #16130C;
+      --shot-filter: brightness(0.9) contrast(1.02);
+      --shot-panel: #221D14;
     }
   }
   :root[data-theme="dark"] {
@@ -117,8 +127,12 @@
     --soon: #4DA3FF;
     --someday: #9A9A9E;
     --bg: #16130C;
+    --shot-filter: brightness(0.9) contrast(1.02);
+    --shot-panel: #221D14;
   }
   :root[data-theme="light"] {
+    --shot-filter: none;
+    --shot-panel: #F0E9D6;
     --paper: #FDF6E3;
     --ink: #3A342A;
     --muted: #6B6252;
@@ -354,7 +368,7 @@
 
 
   /* ---------- Features ---------- */
-  section.features { padding: 56px 0; }
+  section.features { padding: 24px 0 56px; }
   .section-head {
     font-family: var(--font-display);
     font-weight: 600;
@@ -368,21 +382,20 @@
     margin: 0 0 36px;
     max-width: 50ch;
   }
-  .feature-grid {
+  /* One benefit per row: the claim on the left, the screen that backs it on
+     the right. Cards side by side couldn't give a phone screenshot enough
+     height to read as a phone; a row can, without pushing the text down. */
+  .benefit {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 40px;
+    align-items: center;
+    padding: 28px 0;
   }
-  @media (max-width: 700px) {
-    .feature-grid { grid-template-columns: 1fr; }
-  }
-  .feature-card {
-    background: var(--card);
-    border: 1px solid var(--card-border);
-    border-radius: 14px;
-    padding: 24px;
-  }
-  .feature-card .tag {
+  .benefit + .benefit { border-top: 1px solid var(--rule); }
+  /* Kept from the old cards, re-scoped to the row — same eyebrow treatment,
+     so the section still reads in the site's own voice. */
+  .benefit .tag {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -393,20 +406,55 @@
     color: var(--muted);
     margin-bottom: 12px;
   }
-  .feature-card .tag .dot { width: 7px; height: 7px; border-radius: 50%; }
-  .feature-card h3 {
-    font-size: 17px;
-    margin: 0 0 8px;
+  .benefit .tag .dot { width: 7px; height: 7px; border-radius: 50%; }
+  .benefit h3 {
+    font-family: var(--font-display);
+    font-size: clamp(20px, 2.2vw, 26px);
     font-weight: 600;
+    margin: 0 0 10px;
+    text-wrap: balance;
   }
-  .feature-card p {
-    font-size: 14.5px;
+  .benefit p {
+    font-size: 15px;
     line-height: 1.6;
     color: var(--muted);
     margin: 0;
+    max-width: 42ch;
   }
-
-  /* ---------- Badge row ---------- */
+  /* The shot stands ON the panel's bottom edge rather than floating inside
+     it: only the top corners are rounded, so a screen that continues past the
+     crop reads as continuing past the panel, not as an image cut short. */
+  .shot-panel {
+    background: var(--shot-panel);
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    padding: 26px 26px 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+  .shot-panel .phone {
+    display: block;
+    width: min(300px, 100%);
+    height: auto;
+    /* Proportional to the captured device's own corner radius at this size. */
+    border-radius: 34px 34px 0 0;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+    filter: var(--shot-filter);
+  }
+  /* The Mac window arrives with its own rounded corners and shadow in the
+     capture's alpha, so it needs neither here — just room to breathe. */
+  .shot-panel.mac { padding: 22px; align-items: center; }
+  .shot-panel .mac-window {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: var(--shot-filter);
+  }
+  @media (max-width: 760px) {
+    .benefit { grid-template-columns: 1fr; gap: 24px; }
+  }
   .badges {
     display: flex;
     flex-wrap: wrap;
@@ -422,7 +470,6 @@
     color: var(--muted);
   }
 
-  /* ---------- FAQ ---------- */
   section.faq { padding: 8px 0 40px; }
   .faq-item { padding: 18px 0; border-top: 1px solid var(--rule); }
   .faq-item h3 {
@@ -553,30 +600,62 @@
 
 
   <section class="features">
-    <h2 class="section-head">Plain text, real tasks</h2>
-    <div class="feature-grid">
-      <div class="feature-card">
-        <div class="tag"><span class="dot" style="background: var(--next);"></span>Freedom to write</div>
-        <h3>Notes and tasks side by side</h3>
-        <p>In Subnotes, your notes and your to-do list are finally the same document.</p>
+    <div class="benefit">
+      <div>
+        <div class="tag"><span class="dot" style="background: var(--next);"></span>Notes and tasks</div>
+        <h3>One app, not two</h3>
+        <p>Notes and tasks side by side. Rich to-do lists without a second app to keep in sync.</p>
       </div>
-      <div class="feature-card">
-        <div class="tag"><span class="dot" style="background: var(--next);"></span>Confident to deliver</div>
-        <h3>You decide what Today looks like</h3>
-        <p>Organize tasks by what happens Next or Soon, and the few things that really need to be done Today.</p>
+      <div class="shot-panel">
+        <img class="phone" src="assets/shots/phone-notebooks.webp" width="768" height="1001"
+             loading="lazy" decoding="async"
+             alt="The Subnotes home screen on iPhone: Today and All Tasks summary cards above notebooks named Scratchpad, Trip Planning and Garden.">
       </div>
-      <div class="feature-card">
-        <div class="tag"><span class="dot" style="background: var(--next);"></span>Plain text</div>
+    </div>
+
+    <div class="benefit">
+      <div>
+        <div class="tag"><span class="dot" style="background: var(--next);"></span>Plain text, real tasks</div>
+        <h3>Write it down. Some of it gets done.</h3>
+        <p>Speed matters when jotting down half-finished ideas and for keeping your projects up to date.</p>
+      </div>
+      <div class="shot-panel">
+        <img class="phone" src="assets/shots/phone-notes.webp" width="768" height="1001"
+             loading="lazy" decoding="async"
+             alt="A note on iPhone headed &quot;Before we go&quot;, with three tasks written as bullet points and tagged Next, Next and Soon, above a numbered itinerary.">
+      </div>
+    </div>
+
+    <div class="benefit">
+      <div>
+        <div class="tag"><span class="dot" style="background: var(--next);"></span>Fuzzy scheduling</div>
+        <h3>You are the boss (not your todo list)</h3>
+        <p>Organize tasks by what happens Next, Soon, or Someday. Most things don&#39;t have a due date.</p>
+      </div>
+      <div class="shot-panel">
+        <img class="phone" src="assets/shots/phone-today.webp" width="768" height="1001"
+             loading="lazy" decoding="async"
+             alt="The All Tasks screen on iPhone: an empty Today section above a Next section listing &quot;Book flights&quot; and &quot;Book accommodation&quot;, each labelled with the notebook it came from.">
+      </div>
+    </div>
+
+    <!-- The Mac window is this row's evidence: it's the one screenshot that can
+         show "on iPhone, iPad & Mac", and showing the same home screen row 1
+         shows on a phone is the point rather than a repeat. -->
+    <div class="benefit">
+      <div>
+        <div class="tag"><span class="dot" style="background: var(--next);"></span>Open formats</div>
         <h3>Nothing to learn or lock you in</h3>
-        <p>Note-taking and planning are deeply personal — so everything is stored as plain text, not a proprietary format.</p>
+        <p>Plain text, export any time, private sync over your own iCloud on iPhone, iPad &amp; Mac.</p>
       </div>
-      <div class="feature-card">
-        <div class="tag"><span class="dot" style="background: var(--next);"></span>Private</div>
-        <h3>Private on iPhone, iPad &amp; Mac</h3>
-        <p>Syncs privately over your own iCloud account: nothing to sign up for, nothing to hand over.</p>
+      <div class="shot-panel mac">
+        <img class="mac-window" src="assets/shots/mac-notebooks.webp" width="1400" height="1078"
+             loading="lazy" decoding="async"
+             alt="Subnotes on a Mac: Today and All Tasks summaries above rows of notebooks and templates.">
       </div>
     </div>
   </section>
+
   
   
 
