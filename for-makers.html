@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Plain text, real tasks — Subnotes for entrepreneurs &amp; side projects</title>
+<title>Notes and to-do lists in one app — Subnotes for entrepreneurs &amp; side projects</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Stop planning in a notes app and executing in a separate to-do app. Subnotes turns your notes into a real to-do list, as you write. Free on the App Store.">
+<meta name="description" content="Subnotes is a plain-text notes and to-do list app for iPhone, iPad and Mac, for entrepreneurs and side projects. Plan and do the work in one document — free, no signup, private iCloud sync.">
 <link rel="canonical" href="https://subnotes.app/for-makers.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Subnotes">
@@ -21,14 +21,38 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "Subnotes",
-  "url": "https://subnotes.app/for-makers.html",
-  "description": "Subnotes turns your notes into a real to-do list, live, as you write — no second app, no retyping.",
+  "url": "https://subnotes.app/",
+  "description": "Subnotes is a plain-text note-taking and to-do list app for iPhone, iPad and Mac. Write notes, and any line can become a task with a priority and a date.",
   "applicationCategory": "ProductivityApplication",
+  "applicationSubCategory": "Note-taking and to-do list app for entrepreneurs and side projects",
   "operatingSystem": "iOS, iPadOS, macOS",
+  "downloadUrl": "https://apps.apple.com/us/app/subnotes/id6787954455",
+  "installUrl": "https://apps.apple.com/us/app/subnotes/id6787954455",
+  "sameAs": [
+    "https://apps.apple.com/us/app/subnotes/id6787954455"
+  ],
+  "softwareVersion": "1.2",
+  "datePublished": "2026-08-19",
+  "isAccessibleForFree": true,
+  "featureList": [
+    "Notes and tasks in the same document",
+    "Any line of a note can become a task",
+    "Organise tasks by Today, Next, Soon or Someday instead of due dates",
+    "Subnotes: attach notes to individual tasks",
+    "Stored as plain text, with Markdown import and export",
+    "Private sync over your own iCloud account, with no signup",
+    "Works offline on iPhone, iPad and Mac",
+    "Today widget and Share Extension"
+  ],
   "offers": {
     "@type": "Offer",
     "price": "0",
     "priceCurrency": "USD"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Subnotes",
+    "url": "https://subnotes.app/"
   }
 }
 </script>
@@ -201,7 +225,85 @@
     color: var(--muted);
     border-top: 1px solid var(--rule);
   }
+  /* Same treatment as the homepage: the kicker sits INSIDE the heading, so a
+     parser reads "Notes and to-do lists — One app, not two" while the card
+     looks unchanged. These were h3s under a section heading; that heading has
+     become one of the kickers, so the cards are the sections now. */
+  .feature-card h2 {
+    margin: 0 0 8px;
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  .feature-card .tag { display: flex; }
+  .feature-card .claim {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+  }
+  /* The one sentence that says what the app IS, in the words someone would
+     search for. The headline above it sells; this one gets quoted. */
+  .lede-def {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--muted);
+    max-width: 52ch;
+    margin: -6px 0 22px;
+  }
+  section.faq { padding: 8px 0 8px; }
+  .faq-head {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(22px, 3vw, 26px);
+    margin: 40px 0 4px;
+  }
+  .faq-item { padding: 18px 0; border-top: 1px solid var(--rule); }
+  .faq-item h3 {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0 0 6px;
+  }
+  .faq-item p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0;
+    max-width: 72ch;
+  }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I plan a whole project in Subnotes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Each project gets its own notebook, with headings for the parts of it, and any line in the notes can become a task. The Today and All Tasks views pull those tasks together across every notebook, so planning and doing stay in the same document."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Subnotes have due dates and recurring tasks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both, and neither is required. A task can have a date, repeat daily, weekly, monthly or yearly, or carry no date at all — most things sit in Next, Soon or Someday instead."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I capture on my phone and write on my Mac?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "That is the intended way to use it. Subnotes is one universal app for iPhone, iPad and Mac, and the same notebooks sync privately over your own iCloud account."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -214,36 +316,61 @@
   <article class="post">
     <p class="eyebrow">For entrepreneurs &amp; solo founders</p>
     <h1>Stop planning in one app and doing the work in another</h1>
+  <p class="lede-def">Subnotes is a plain-text notes and to-do list app for iPhone, iPad &amp; Mac. Any line you write can become a task.</p>
+
 
     <p class="body-text">If you're building something on your own — a side project, a one-person business — you've probably ended up running two systems: a notes app for the real thinking, and a separate to-do app for actually getting it done.</p>
     <p class="body-text">The notes app is where strategy happens — meeting notes, half-formed ideas, the actual thinking. But it has no real task features, so anything that needs doing gets retyped into a to-do app that never has the context it came from. Subnotes is built to be both at once.</p>
     <p class="body-text">If a rigid planner has never stuck for you — because your best ideas never show up on schedule — that's not a discipline problem. It's what Subnotes is actually built around.</p>
 
-    <h2 class="value-head">Plain text, real tasks.</h2>
     <p class="body-text muted">Subnotes turns your notes into a real to-do list, live, as you write — no second app, no retyping.</p>
 
     <div class="feature-grid">
       <div class="feature-card">
-        <div class="tag"><span class="dot" style="background: var(--next);"></span>Freedom to write</div>
-        <h3>Notes and tasks side by side</h3>
-        <p>Don't let anything limit your creativity. Get rich to-do lists without needing a second app.</p>
+        <h2>
+          <span class="tag"><span class="dot" style="background: var(--next);"></span>Notes and to-do lists</span>
+          <span class="claim">One app, not two</span>
+        </h2>
+        <p>Notes and tasks side by side. Rich to-do lists without a second app to keep in sync.</p>
       </div>
       <div class="feature-card">
-        <div class="tag"><span class="dot" style="background: var(--next);"></span>Confident to deliver</div>
-        <h3>You decide what Today looks like</h3>
-        <p>Organize tasks by what happens Next or Soon, and the few things that really need to be done Today.</p>
+        <h2>
+          <span class="tag"><span class="dot" style="background: var(--next);"></span>Plain text, real tasks</span>
+          <span class="claim">Write it down. Some of it gets done.</span>
+        </h2>
+        <p>Speed matters when jotting down half-finished ideas and for keeping your projects up to date.</p>
       </div>
       <div class="feature-card">
-        <div class="tag"><span class="dot" style="background: var(--next);"></span>Plain text</div>
-        <h3>Nothing to learn or lock you in</h3>
-        <p>Plain text — where bullet points are tasks.</p>
+        <h2>
+          <span class="tag"><span class="dot" style="background: var(--next);"></span>Kanban board</span>
+          <span class="claim">You are the boss (not your todo list)</span>
+        </h2>
+        <p>Organize tasks by what happens Next, Soon, or Someday. Most things don&#39;t have a due date.</p>
       </div>
       <div class="feature-card">
-        <div class="tag"><span class="dot" style="background: var(--next);"></span>Private</div>
-        <h3>On iPhone, iPad &amp; Mac</h3>
-        <p>Syncs privately over your own iCloud account: nothing to sign up for, nothing to hand over.</p>
+        <h2>
+          <span class="tag"><span class="dot" style="background: var(--next);"></span>Markdown</span>
+          <span class="claim">Nothing to learn or lock you in</span>
+        </h2>
+        <p>Plain text, export any time, private sync over your own iCloud on iPhone, iPad &amp; Mac.</p>
       </div>
     </div>
+
+  <section class="faq">
+    <h2 class="faq-head">Common questions</h2>
+    <div class="faq-item">
+      <h3>Can I plan a whole project in Subnotes?</h3>
+      <p>Yes. Each project gets its own notebook, with headings for the parts of it, and any line in the notes can become a task. The Today and All Tasks views pull those tasks together across every notebook, so planning and doing stay in the same document.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does Subnotes have due dates and recurring tasks?</h3>
+      <p>Both, and neither is required. A task can have a date, repeat daily, weekly, monthly or yearly, or carry no date at all — most things sit in Next, Soon or Someday instead.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I capture on my phone and write on my Mac?</h3>
+      <p>That is the intended way to use it. Subnotes is one universal app for iPhone, iPad and Mac, and the same notebooks sync privately over your own iCloud account.</p>
+    </div>
+  </section>
 
     <div class="cta-row">
       <a class="btn-primary" href="https://apps.apple.com/app/apple-store/id6787954455?pt=128931142&amp;ct=solo&amp;mt=8">Download on the App Store</a>

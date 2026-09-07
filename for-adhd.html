@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Release your creativity — Subnotes for ADHD</title>
+<title>ADHD-friendly notes and to-do list app — Subnotes</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Release your creativity. Some of it gets done. An ADHD-friendly to-do list for minds full of ideas. Free on the App Store for iPhone, iPad &amp; Mac.">
+<meta name="description" content="Subnotes is a plain-text notes and to-do list app for iPhone, iPad and Mac, built for minds full of ideas. Capture anything, and turn a line into a task when you are ready — free, no signup, no rigid scheduling.">
 <link rel="canonical" href="https://subnotes.app/for-adhd.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Subnotes">
@@ -21,14 +21,38 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "Subnotes",
-  "url": "https://subnotes.app/for-adhd.html",
-  "description": "An ADHD-friendly to-do list for minds full of ideas. Subnotes turns whatever you're writing into a real to-do list, live.",
+  "url": "https://subnotes.app/",
+  "description": "Subnotes is a plain-text note-taking and to-do list app for iPhone, iPad and Mac. Write notes, and any line can become a task with a priority and a date.",
   "applicationCategory": "ProductivityApplication",
+  "applicationSubCategory": "ADHD-friendly note-taking and to-do list app",
   "operatingSystem": "iOS, iPadOS, macOS",
+  "downloadUrl": "https://apps.apple.com/us/app/subnotes/id6787954455",
+  "installUrl": "https://apps.apple.com/us/app/subnotes/id6787954455",
+  "sameAs": [
+    "https://apps.apple.com/us/app/subnotes/id6787954455"
+  ],
+  "softwareVersion": "1.2",
+  "datePublished": "2026-08-19",
+  "isAccessibleForFree": true,
+  "featureList": [
+    "Notes and tasks in the same document",
+    "Any line of a note can become a task",
+    "Organise tasks by Today, Next, Soon or Someday instead of due dates",
+    "Subnotes: attach notes to individual tasks",
+    "Stored as plain text, with Markdown import and export",
+    "Private sync over your own iCloud account, with no signup",
+    "Works offline on iPhone, iPad and Mac",
+    "Today widget and Share Extension"
+  ],
   "offers": {
     "@type": "Offer",
     "price": "0",
     "priceCurrency": "USD"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Subnotes",
+    "url": "https://subnotes.app/"
   }
 }
 </script>
@@ -243,7 +267,89 @@
     color: var(--muted);
     border-top: 1px solid var(--rule);
   }
+  /* Same treatment as the homepage: the kicker sits INSIDE the heading, so a
+     parser reads "Notes and to-do lists — One app, not two" while the card
+     looks unchanged. These were h3s under a section heading; that heading has
+     become one of the kickers, so the cards are the sections now. */
+  .feature-card h2 {
+    margin: 0 0 8px;
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  .feature-card .tag { display: flex; }
+  .feature-card .claim {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+  }
+  /* The one sentence that says what the app IS, in the words someone would
+     search for. The headline above it sells; this one gets quoted. */
+  /* Centred, unlike the entrepreneur page's: this page centres its eyebrow,
+     H1 and the whole feelings section, so a left-aligned line here sat off
+     on its own against the page edge. */
+  .lede-def {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--muted);
+    max-width: 52ch;
+    margin: -6px auto 22px;
+    text-align: center;
+  }
+  section.faq { padding: 8px 0 8px; }
+  .faq-head {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(22px, 3vw, 26px);
+    margin: 40px 0 4px;
+  }
+  .faq-item { padding: 18px 0; border-top: 1px solid var(--rule); }
+  .faq-item h3 {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0 0 6px;
+  }
+  .faq-item p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0;
+    max-width: 72ch;
+  }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I have to set due dates for everything?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Tasks can sit in Next, Soon or Someday with no date at all, and Today only shows what is actually due today or overdue — so nothing turns red for being ignored."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Subnotes remind me about tasks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On iPhone and iPad, a task with a specific time gets a notification at that time. Every platform shows a badge with the number of things due today, and the widget lists them on your Home Screen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What makes Subnotes suit the way I think?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There is nowhere to file an idea before you have it. You write in plain text, and a line becomes a task when it turns out to be one — so capturing never waits on deciding where something belongs."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -255,6 +361,8 @@
 
   <p class="eyebrow">For ADHD minds full of ideas</p>
   <h1>Release your creativity. Some of it gets done.</h1>
+  <p class="lede-def">Subnotes is a plain-text notes and to-do list app for iPhone, iPad &amp; Mac. Any line you write can become a task.</p>
+
 
   <section class="feelings">
     <p class="feelings-intro">Your brain doesn't run in a straight line.</p>
@@ -265,31 +373,54 @@
   </section>
 
   <article class="post">
-    <h2 class="solution-head">Plain text, real tasks</h2>
     <p class="body-text">Built for ADHD brains that think fast and jump around — Subnotes turns whatever you're writing into a real to-do list, live, no separate app, no re-sorting later.</p>
 
     <div class="feature-grid">
       <div class="feature-card">
-        <div class="tag"><span class="dot" style="background: var(--next);"></span>Freedom to write</div>
-        <h3>Notes and tasks side by side</h3>
-        <p>In Subnotes, your notes and your to-do list are finally the same document.</p>
+        <h2>
+          <span class="tag"><span class="dot" style="background: var(--next);"></span>Notes and to-do lists</span>
+          <span class="claim">One app, not two</span>
+        </h2>
+        <p>Notes and tasks side by side. Rich to-do lists without a second app to keep in sync.</p>
       </div>
       <div class="feature-card">
-        <div class="tag"><span class="dot" style="background: var(--next);"></span>Confident to deliver</div>
-        <h3>You decide what Today looks like</h3>
-        <p>Organize tasks by what happens Next or Soon, and the few things that really need to be done Today.</p>
+        <h2>
+          <span class="tag"><span class="dot" style="background: var(--next);"></span>Plain text, real tasks</span>
+          <span class="claim">Write it down. Some of it gets done.</span>
+        </h2>
+        <p>Speed matters when jotting down half-finished ideas and for keeping your projects up to date.</p>
       </div>
       <div class="feature-card">
-        <div class="tag"><span class="dot" style="background: var(--next);"></span>Plain text</div>
-        <h3>Nothing to learn or lock you in</h3>
-        <p>Note-taking and planning are deeply personal — so everything is stored as plain text, not a proprietary format.</p>
+        <h2>
+          <span class="tag"><span class="dot" style="background: var(--next);"></span>Kanban board</span>
+          <span class="claim">You are the boss (not your todo list)</span>
+        </h2>
+        <p>Organize tasks by what happens Next, Soon, or Someday. Most things don&#39;t have a due date.</p>
       </div>
       <div class="feature-card">
-        <div class="tag"><span class="dot" style="background: var(--next);"></span>Private</div>
-        <h3>Private on iPhone, iPad &amp; Mac</h3>
-        <p>Syncs privately over your own iCloud account: nothing to sign up for, nothing to hand over.</p>
+        <h2>
+          <span class="tag"><span class="dot" style="background: var(--next);"></span>Markdown</span>
+          <span class="claim">Nothing to learn or lock you in</span>
+        </h2>
+        <p>Plain text, export any time, private sync over your own iCloud on iPhone, iPad &amp; Mac.</p>
       </div>
     </div>
+
+  <section class="faq">
+    <h2 class="faq-head">Common questions</h2>
+    <div class="faq-item">
+      <h3>Do I have to set due dates for everything?</h3>
+      <p>No. Tasks can sit in Next, Soon or Someday with no date at all, and Today only shows what is actually due today or overdue — so nothing turns red for being ignored.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does Subnotes remind me about tasks?</h3>
+      <p>On iPhone and iPad, a task with a specific time gets a notification at that time. Every platform shows a badge with the number of things due today, and the widget lists them on your Home Screen.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What makes Subnotes suit the way I think?</h3>
+      <p>There is nowhere to file an idea before you have it. You write in plain text, and a line becomes a task when it turns out to be one — so capturing never waits on deciding where something belongs.</p>
+    </div>
+  </section>
 
     <div class="cta-row">
       <a class="btn-primary" href="https://apps.apple.com/app/apple-store/id6787954455?pt=128931142&amp;ct=adhd&amp;mt=8">Download on the App Store</a>
