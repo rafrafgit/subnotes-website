@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Subnotes — Write it down. Some of it gets done.</title>
+<title>Subnotes — plain-text notes &amp; to-do lists for iPhone, iPad &amp; Mac</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Write it down. Some of it gets done. Subnotes turns your notes into to-do lists as you write. Free on the App Store for iPhone, iPad &amp; Mac.">
+<meta name="description" content="Subnotes is a free plain-text note-taking and to-do list app for iPhone, iPad and Mac. Write notes, and any line can become a task — no signup, private iCloud sync, Markdown import and export.">
 <link rel="canonical" href="https://subnotes.app/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Subnotes">
@@ -33,13 +33,43 @@
   "@type": "SoftwareApplication",
   "name": "Subnotes",
   "url": "https://subnotes.app/",
-  "description": "Subnotes turns your notes into to-do lists as you write. Free on the App Store for iPhone, iPad & Mac.",
+  "description": "Subnotes is a plain-text note-taking and to-do list app for iPhone, iPad and Mac. Write notes, and any line can become a task with a priority and a date.",
   "applicationCategory": "ProductivityApplication",
+  "applicationSubCategory": "Note-taking and to-do list app",
   "operatingSystem": "iOS, iPadOS, macOS",
+  "downloadUrl": "https://apps.apple.com/us/app/subnotes/id6787954455",
+  "installUrl": "https://apps.apple.com/us/app/subnotes/id6787954455",
+  "sameAs": [
+    "https://apps.apple.com/us/app/subnotes/id6787954455"
+  ],
+  "softwareVersion": "1.2",
+  "datePublished": "2026-08-19",
+  "isAccessibleForFree": true,
+  "featureList": [
+    "Notes and tasks in the same document",
+    "Any line of a note can become a task",
+    "Organise tasks by Today, Next, Soon or Someday instead of due dates",
+    "Subnotes: attach notes to individual tasks",
+    "Stored as plain text, with Markdown import and export",
+    "Private sync over your own iCloud account, with no signup",
+    "Works offline on iPhone, iPad and Mac",
+    "Today widget and Share Extension"
+  ],
+  "screenshot": [
+    "https://subnotes.app/assets/shots/phone-notebooks.webp",
+    "https://subnotes.app/assets/shots/phone-notes.webp",
+    "https://subnotes.app/assets/shots/phone-today.webp",
+    "https://subnotes.app/assets/shots/mac-notebooks.webp"
+  ],
   "offers": {
     "@type": "Offer",
     "price": "0",
     "priceCurrency": "USD"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Subnotes",
+    "url": "https://subnotes.app/"
   }
 }
 </script>
@@ -70,6 +100,46 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Always — everything is stored as plain text, not a proprietary format, so nothing is locked in."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Subnotes a notes app or a to-do list app?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both, and that's the point. You write in plain text, and any line can become a task with a priority and a date — so your notes and your to-do list are the same document instead of two apps you keep in sync by hand."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Subnotes work offline?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Your notes live on your device, so everything works with no connection at all. iCloud syncs the changes across your devices whenever you're back online."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a Mac app?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — Subnotes is one universal app for iPhone, iPad and Mac. A single free download covers all three, and the same notebooks appear on each."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Subnotes support Markdown?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Notes are stored as plain text, and you can import and export them as Markdown files at any time, straight to the Files app or Finder."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need an account to use Subnotes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. There's no signup, no password and no server of ours — syncing runs through your own iCloud account, which you already have."
       }
     }
   ]
@@ -412,11 +482,22 @@
     margin-bottom: 12px;
   }
   .benefit .tag .dot { width: 7px; height: 7px; border-radius: 50%; }
-  .benefit h3 {
+  /* The kicker lives INSIDE the heading rather than in a div above it, so
+     each section's heading reads "Notes and tasks — One app, not two" to
+     anything parsing the page, while looking exactly as it did. The heading
+     itself carries no type styling; the two spans do, which is what keeps the
+     kicker on its own line above the claim. */
+  .benefit h2 {
+    margin: 0 0 10px;
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  .benefit .tag { display: flex; }
+  .benefit .claim {
+    display: block;
     font-family: var(--font-display);
     font-size: clamp(20px, 2.2vw, 26px);
     font-weight: 600;
-    margin: 0 0 10px;
     text-wrap: balance;
   }
   .benefit p {
@@ -543,7 +624,7 @@
   <header class="hero">
     <div>
       <h1>Write it down. Some of it gets done.</h1>
-      <p class="lede">Subnotes turns notes into to-do lists, as you write.</p>
+      <p class="lede">Subnotes is a plain-text notes and to-do list app for iPhone, iPad &amp; Mac. Any line you write can become a task.</p>
       <div class="cta-row">
         <a class="btn-primary" href="https://apps.apple.com/us/app/subnotes/id6787954455">
           Download on the App Store
@@ -612,8 +693,10 @@
   <section class="features">
     <div class="benefit">
       <div>
-        <div class="tag"><span class="dot" style="background: var(--next);"></span>Notes and tasks</div>
-        <h3>One app, not two</h3>
+        <h2>
+          <span class="tag"><span class="dot" style="background: var(--next);"></span>Notes and to-do lists</span>
+          <span class="claim">One app, not two</span>
+        </h2>
         <p>Notes and tasks side by side. Rich to-do lists without a second app to keep in sync.</p>
       </div>
       <div class="shot-panel">
@@ -625,8 +708,10 @@
 
     <div class="benefit">
       <div>
-        <div class="tag"><span class="dot" style="background: var(--next);"></span>Plain text, real tasks</div>
-        <h3>Write it down. Some of it gets done.</h3>
+        <h2>
+          <span class="tag"><span class="dot" style="background: var(--next);"></span>Plain text, real tasks</span>
+          <span class="claim">Write it down. Some of it gets done.</span>
+        </h2>
         <p>Speed matters when jotting down half-finished ideas and for keeping your projects up to date.</p>
       </div>
       <div class="shot-panel">
@@ -638,8 +723,10 @@
 
     <div class="benefit">
       <div>
-        <div class="tag"><span class="dot" style="background: var(--next);"></span>Fuzzy scheduling</div>
-        <h3>You are the boss (not your todo list)</h3>
+        <h2>
+          <span class="tag"><span class="dot" style="background: var(--next);"></span>Kanban board</span>
+          <span class="claim">You are the boss (not your todo list)</span>
+        </h2>
         <p>Organize tasks by what happens Next, Soon, or Someday. Most things don&#39;t have a due date.</p>
       </div>
       <div class="shot-panel">
@@ -654,8 +741,10 @@
          shows on a phone is the point rather than a repeat. -->
     <div class="benefit">
       <div>
-        <div class="tag"><span class="dot" style="background: var(--next);"></span>Open formats</div>
-        <h3>Nothing to learn or lock you in</h3>
+        <h2>
+          <span class="tag"><span class="dot" style="background: var(--next);"></span>Markdown</span>
+          <span class="claim">Nothing to learn or lock you in</span>
+        </h2>
         <p>Plain text, export any time, private sync over your own iCloud on iPhone, iPad &amp; Mac.</p>
       </div>
       <div class="shot-panel mac">
@@ -690,6 +779,32 @@
     <div class="faq-item">
       <h3>Can I get my notes out of Subnotes if I ever want to?</h3>
       <p>Always — everything is stored as plain text, not a proprietary format, so nothing is locked in.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is Subnotes a notes app or a to-do list app?</h3>
+      <p>Both, and that's the point. You write in plain text, and any line can become a task with a
+        priority and a date — so your notes and your to-do list are the same document instead of two
+        apps you keep in sync by hand.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does Subnotes work offline?</h3>
+      <p>Yes. Your notes live on your device, so everything works with no connection at all. iCloud
+        syncs the changes across your devices whenever you're back online.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is there a Mac app?</h3>
+      <p>Yes — Subnotes is one universal app for iPhone, iPad and Mac. A single free download covers
+        all three, and the same notebooks appear on each.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does Subnotes support Markdown?</h3>
+      <p>Notes are stored as plain text, and you can import and export them as Markdown files at any
+        time, straight to the Files app or Finder.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Do I need an account to use Subnotes?</h3>
+      <p>No. There's no signup, no password and no server of ours — syncing runs through your own
+        iCloud account, which you already have.</p>
     </div>
   </section>
 
