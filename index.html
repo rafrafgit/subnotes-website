@@ -59,7 +59,9 @@
     "https://subnotes.app/assets/shots/phone-notebooks.webp",
     "https://subnotes.app/assets/shots/phone-notes.webp",
     "https://subnotes.app/assets/shots/phone-today.webp",
-    "https://subnotes.app/assets/shots/mac-notebooks.webp"
+    "https://subnotes.app/assets/shots/mac-notebooks.webp",
+    "https://subnotes.app/assets/shots/mac-notes.webp",
+    "https://subnotes.app/assets/shots/mac-tasks.webp"
   ],
   "offers": {
     "@type": "Offer",
@@ -217,6 +219,11 @@
 
   * { box-sizing: border-box; }
   body {
+    /* The hero shots deliberately overhang their grid column (see .hero-shots),
+       which on some window widths puts their right edge just past the viewport.
+       Clip, not hidden: overflow: clip does not create a scroll container, so
+       it cannot break sticky positioning or anchor scrolling elsewhere. */
+    overflow-x: clip;
     margin: 0;
     background: var(--bg);
     color: var(--ink);
@@ -266,12 +273,18 @@
   header.hero {
     padding: 48px 0 72px;
     display: grid;
-    grid-template-columns: 1.1fr 1fr;
+    /* Was 1.1fr 1fr, when this column held a single shot. The layered pair
+       needs more room; h1 is capped at 14ch so the text column loses nothing
+       it was actually using. */
+    grid-template-columns: 1fr 1.15fr;
     gap: 56px;
     align-items: center;
   }
   @media (max-width: 860px) {
     header.hero { grid-template-columns: 1fr; padding: 16px 0 48px; }
+    /* One column now, so the pair already has the full content width — no
+       reason to overhang anything. */
+    .hero-shots { --hero-shots-width: 100%; }
   }
   .eyebrow {
     font-size: 12px;
@@ -314,6 +327,12 @@
 
   /* ---------- Notebook mockup ---------- */
   .mock {
+    /* Constrained and centred: this used to sit in the hero's right-hand
+       column and took its width from that. As a direct child of .wrap it would
+       otherwise stretch to the full 1040px content width, leaving a few short
+       lines of text stranded across a very wide card. */
+    max-width: 520px;
+    margin: 0 auto 56px;
     background: var(--paper);
     border: 1px solid var(--card-border);
     border-radius: 16px;
@@ -463,6 +482,10 @@
     padding: 28px 0;
   }
   .benefit + .benefit { border-top: 1px solid var(--rule); }
+  /* A row with no screenshot: one column rather than an empty half. The
+     paragraph keeps its own 42ch cap, so the line length stays the same as
+     every other row's — only the column it sits in is wider. */
+  .benefit.no-shot { grid-template-columns: minmax(0, 1fr); }
   /* Alternate which side the screen sits on. Done with `order` rather than by
      reordering the markup, so every row still reads claim-then-evidence to a
      screen reader and in the stacked layout below. */
@@ -532,6 +555,42 @@
   /* The Mac window arrives with its own rounded corners and shadow in the
      capture's alpha, so it needs neither here — just room to breathe. */
   .shot-panel.mac { padding: 22px; align-items: center; }
+  /* Two Mac windows, overlapped. The hero's right-hand column is only ~446px
+     on a wide screen, which is not enough for two windows to read as anything
+     — so the pair deliberately runs wider than its column and trails off
+     toward the viewport edge, which is also what makes it feel like a hero
+     rather than a thumbnail. --hero-shots-width is the knob: lower it to keep
+     the pair inside the column, raise it to let more of it escape.
+
+     The captures carry their own rounded corners and shadow in their alpha, so
+     neither is added here. */
+  .hero-shots {
+    --hero-shots-width: 132%;
+    position: relative;
+    /* Never wider than the viewport itself, so this can't cause a horizontal
+       scrollbar on a narrow window. */
+    width: min(var(--hero-shots-width), calc(100vw - 48px));
+    /* one window's height (0.77 of its own width, so 0.54 of the container at
+       70%) plus the 20% the second one drops below it */
+    aspect-ratio: 100 / 74;
+  }
+  .hero-shot {
+    display: block;
+    position: absolute;
+    height: auto;
+    filter: var(--shot-filter);
+  }
+  /* Both windows the same size — they are two views of one notebook, and
+     shrinking the second would read as "and also, a smaller thing". The
+     offset alone carries the stacking. 70% leaves a 30% step, which is what
+     keeps the note's own text (left-aligned, within the first quarter of its
+     window) clear of the window in front. */
+  .hero-shots .base,
+  .hero-shots .overlay {
+    width: var(--hero-shot-size, 70%);
+  }
+  .hero-shots .base { top: 0; left: 0; }
+  .hero-shots .overlay { bottom: 0; right: 0; }
   .shot-panel .mac-window {
     display: block;
     width: 100%;
@@ -632,58 +691,29 @@
         <span class="cta-note">Free. One app, universal across iPhone, iPad &amp; Mac.</span>
       </div>
     </div>
-    <div class="mock">
-      <div class="mock-toggle" role="tablist" aria-label="Preview view">
-        <button type="button" class="mock-toggle-btn active" data-view="note" role="tab" aria-selected="true">Notes</button>
-        <button type="button" class="mock-toggle-btn" data-view="tasks" role="tab" aria-selected="false">Tasks</button>
-      </div>
-      <div class="mock-views">
-      <div class="mock-view active" data-view="note">
-        <div class="heading">Kitchen Remodel</div>
-        <div class="prose">Talked to the contractor today — he thinks we should widen the doorway before the cabinets arrive.</div>
-        <div class="task">
-          <span class="dot" style="background: var(--next);"></span>
-          <span class="task-text">Call contractor about doorway width</span>
-        </div>
-        <div class="subnote">He's free Tuesday or Thursday afternoon</div>
-        <div class="task">
-          <span class="dot" style="background: var(--someday);"></span>
-          <span class="task-text">Look into a wine fridge</span>
-        </div>
-        <div class="task">
-          <span class="dot" style="background: var(--soon);"></span>
-          <span class="task-text">Pick cabinet hardware</span>
-        </div>
-      </div>
-      <div class="mock-view" data-view="tasks">
-        <div class="heading">Kitchen Remodel</div>
-
-        <div class="tasks-panel">
-          <div class="priority-label">Next</div>
-          <div class="task">
-            <span class="task-circle" style="border-color: var(--next);"></span>
-            <span class="task-text">Call contractor about doorway width</span>
-          </div>
-          <div class="subnote">He's free Tuesday or Thursday afternoon</div>
-
-          <div class="priority-label">Soon</div>
-          <div class="task">
-            <span class="task-circle" style="border-color: var(--soon);"></span>
-            <span class="task-text">Pick cabinet hardware</span>
-          </div>
-
-          <div class="priority-label">Someday</div>
-          <div class="task">
-            <span class="task-circle" style="border-color: var(--someday);"></span>
-            <span class="task-text">Look into a wine fridge</span>
-          </div>
-        </div>
-      </div>
-      </div>
-      <div class="mock-dots">
-        <button type="button" class="mock-dot active" data-view="note" aria-label="Show note view"></button>
-        <button type="button" class="mock-dot" data-view="tasks" aria-label="Show tasks view"></button>
-      </div>
+    <!-- Two shots, layered, because together they say the thing the headline
+         claims and neither says alone: "Book flights" and "Book accommodation"
+         are written as ordinary bullets in the Trip Planning note underneath,
+         and appear again in Today on top, each carrying a Trip Planning pill.
+         The note becoming tasks IS the product. The overlay sits bottom-right
+         so the note's headings and text stay visible top-left. -->
+    <div class="hero-shots">
+      <!-- Not loading="lazy": this is the hero and therefore the LCP element,
+           so deferring it delays the very thing being measured. -->
+      <img class="hero-shot base" src="assets/shots/mac-notes.webp" width="1400" height="1078"
+           fetchpriority="high" decoding="async"
+           alt="Subnotes on a Mac, showing the Trip Planning notebook: a &quot;Before we go&quot; heading with the tasks Book flights, Book accommodation and Pack bags tagged Next, Next and Soon, then a numbered itinerary.">
+      <!-- PLACEHOLDER (2026-09-09): this is the Today view, not the notebook's
+           own Tasks tab. The intended shot is Trip Planning -> Tasks, where the
+           same tasks carry a "Before we go" pill pointing back at the heading
+           visible in the note beside it — a tighter story than Today's
+           cross-notebook "Trip Planning" pill. No such capture exists for 1.2:
+           1.1's is full-bleed and opaque rather than a floating window with
+           transparent corners, and 1.0's has old chrome. Swap in a fresh
+           2024x1558 window capture next release, and update the alt text. -->
+      <img class="hero-shot overlay" src="assets/shots/mac-tasks.webp" width="1400" height="1078"
+           decoding="async"
+           alt="The same two tasks, Book flights and Book accommodation, listed under Next in the Today view, each labelled with the Trip Planning notebook they came from.">
     </div>
     
   </header>
@@ -694,10 +724,10 @@
     <div class="benefit">
       <div>
         <h2>
-          <span class="tag"><span class="dot" style="background: var(--next);"></span>Notes and to-do lists</span>
-          <span class="claim">One app, not two</span>
+          <span class="tag"><span class="dot" style="background: var(--next);"></span>One app for notes and to-do lists</span>
+          <span class="claim">Stop planning in one app and doing the work in another</span>
         </h2>
-        <p>Notes and tasks side by side. Rich to-do lists without a second app to keep in sync.</p>
+        <p>Notes and tasks side by side, so there is no second app to keep in sync.</p>
       </div>
       <div class="shot-panel">
         <img class="phone" src="assets/shots/phone-notebooks.webp" width="768" height="1001"
@@ -710,9 +740,9 @@
       <div>
         <h2>
           <span class="tag"><span class="dot" style="background: var(--next);"></span>Plain text, real tasks</span>
-          <span class="claim">Write it down. Some of it gets done.</span>
+          <span class="claim">A note is already a to-do list</span>
         </h2>
-        <p>Speed matters when jotting down half-finished ideas and for keeping your projects up to date.</p>
+        <p>Type five lines and you have five tasks — no forms, no adding them one at a time.</p>
       </div>
       <div class="shot-panel">
         <img class="phone" src="assets/shots/phone-notes.webp" width="768" height="1001"
@@ -724,7 +754,7 @@
     <div class="benefit">
       <div>
         <h2>
-          <span class="tag"><span class="dot" style="background: var(--next);"></span>Kanban board</span>
+          <span class="tag"><span class="dot" style="background: var(--next);"></span>Kanban style</span>
           <span class="claim">You are the boss (not your todo list)</span>
         </h2>
         <p>Organize tasks by what happens Next, Soon, or Someday. Most things don&#39;t have a due date.</p>
@@ -736,27 +766,22 @@
       </div>
     </div>
 
-    <!-- The Mac window is this row's evidence: it's the one screenshot that can
-         show "on iPhone, iPad & Mac", and showing the same home screen row 1
-         shows on a phone is the point rather than a repeat. -->
-    <div class="benefit">
+    <!-- No screenshot on this row, deliberately. The claim answers an objection
+         — "will I be able to get out again?" — and absence of lock-in is not a
+         thing a screenshot can show. It used to carry the Mac window as
+         double duty ("look, it runs on Mac"), which the hero's two Mac windows
+         now do far better, so the row is free to be only what it is. -->
+    <div class="benefit no-shot">
       <div>
         <h2>
-          <span class="tag"><span class="dot" style="background: var(--next);"></span>Markdown</span>
+          <span class="tag"><span class="dot" style="background: var(--next);"></span>Plain text</span>
           <span class="claim">Nothing to learn or lock you in</span>
         </h2>
         <p>Plain text, export any time, private sync over your own iCloud on iPhone, iPad &amp; Mac.</p>
       </div>
-      <div class="shot-panel mac">
-        <img class="mac-window" src="assets/shots/mac-notebooks.webp" width="1400" height="1078"
-             loading="lazy" decoding="async"
-             alt="Subnotes on a Mac: Today and All Tasks summaries above rows of notebooks and templates.">
-      </div>
     </div>
   </section>
 
-  
-  
 
   <div class="badges">
     <span class="badge">No signup required</span>
@@ -764,6 +789,62 @@
     <span class="badge">iPhone, iPad &amp; Mac</span>
     <span class="badge">Always plain text</span>
     <span class="badge">Markdown import / export</span>
+  </div>
+
+  
+
+  <div class="mock">
+    <div class="mock-toggle" role="tablist" aria-label="Preview view">
+      <button type="button" class="mock-toggle-btn active" data-view="note" role="tab" aria-selected="true">Notes</button>
+      <button type="button" class="mock-toggle-btn" data-view="tasks" role="tab" aria-selected="false">Tasks</button>
+    </div>
+    <div class="mock-views">
+    <div class="mock-view active" data-view="note">
+      <div class="heading">Kitchen Remodel</div>
+      <div class="prose">Talked to the contractor today — he thinks we should widen the doorway before the cabinets arrive.</div>
+      <div class="task">
+        <span class="dot" style="background: var(--next);"></span>
+        <span class="task-text">Call contractor about doorway width</span>
+      </div>
+      <div class="subnote">He's free Tuesday or Thursday afternoon</div>
+      <div class="task">
+        <span class="dot" style="background: var(--someday);"></span>
+        <span class="task-text">Look into a wine fridge</span>
+      </div>
+      <div class="task">
+        <span class="dot" style="background: var(--soon);"></span>
+        <span class="task-text">Pick cabinet hardware</span>
+      </div>
+    </div>
+    <div class="mock-view" data-view="tasks">
+      <div class="heading">Kitchen Remodel</div>
+
+      <div class="tasks-panel">
+        <div class="priority-label">Next</div>
+        <div class="task">
+          <span class="task-circle" style="border-color: var(--next);"></span>
+          <span class="task-text">Call contractor about doorway width</span>
+        </div>
+        <div class="subnote">He's free Tuesday or Thursday afternoon</div>
+
+        <div class="priority-label">Soon</div>
+        <div class="task">
+          <span class="task-circle" style="border-color: var(--soon);"></span>
+          <span class="task-text">Pick cabinet hardware</span>
+        </div>
+
+        <div class="priority-label">Someday</div>
+        <div class="task">
+          <span class="task-circle" style="border-color: var(--someday);"></span>
+          <span class="task-text">Look into a wine fridge</span>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="mock-dots">
+      <button type="button" class="mock-dot active" data-view="note" aria-label="Show note view"></button>
+      <button type="button" class="mock-dot" data-view="tasks" aria-label="Show tasks view"></button>
+    </div>
   </div>
 
   <section class="faq">
