@@ -1,0 +1,238 @@
+<title>Claude Code — Subnotes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Connect your Subnotes notebooks to Claude Code — read them, and add tasks without leaving the conversation.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='12' cy='32' r='8' fill='%2334C759'/%3E%3Ccircle cx='32' cy='32' r='8' fill='%230A7CFF'/%3E%3Ccircle cx='52' cy='32' r='8' fill='%238E8E93'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --paper: #FDF6E3;
+    --ink: #3A342A;
+    --muted: #6B6252;
+    --card: #FFFFFF;
+    --card-border: #E7DFC9;
+    --rule: #E7DFC9;
+    --next: #2FA84F;
+    --soon: #0A7CFF;
+    --someday: #8E8E93;
+    --bg: #F7F3E7;
+
+    --font-display: ui-serif, "New York", Georgia, "Times New Roman", serif;
+    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #1E1B12;
+      --ink: #EDE6D3;
+      --muted: #A79E89;
+      --card: #262117;
+      --card-border: #3A3225;
+      --rule: #3A3225;
+      --next: #4CD671;
+      --soon: #4DA3FF;
+      --someday: #9A9A9E;
+      --bg: #16130C;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #1E1B12;
+    --ink: #EDE6D3;
+    --muted: #A79E89;
+    --card: #262117;
+    --card-border: #3A3225;
+    --rule: #3A3225;
+    --next: #4CD671;
+    --soon: #4DA3FF;
+    --someday: #9A9A9E;
+    --bg: #16130C;
+  }
+  :root[data-theme="light"] {
+    --paper: #FDF6E3;
+    --ink: #3A342A;
+    --muted: #6B6252;
+    --card: #FFFFFF;
+    --card-border: #E7DFC9;
+    --rule: #E7DFC9;
+    --next: #2FA84F;
+    --soon: #0A7CFF;
+    --someday: #8E8E93;
+    --bg: #F7F3E7;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  nav.top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 0;
+  }
+  .wordmark {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .dots { display: inline-flex; gap: 3px; }
+  .dots span {
+    width: 7px; height: 7px; border-radius: 50%; display: block;
+  }
+  .dots span:nth-child(1) { background: var(--next); }
+  .dots span:nth-child(2) { background: var(--soon); }
+  .dots span:nth-child(3) { background: var(--someday); }
+  .nav-back {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  main.legal {
+    padding: 20px 0 64px;
+    max-width: 640px;
+  }
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--next);
+    margin-bottom: 14px;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(30px, 4vw, 38px);
+    line-height: 1.15;
+    margin: 0 0 8px;
+    text-wrap: balance;
+  }
+  .updated {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 40px;
+  }
+  .tldr {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin: 0 0 40px;
+  }
+  .tldr .tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .tldr p { margin: 0; font-size: 15.5px; line-height: 1.6; }
+
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 21px;
+    margin: 36px 0 12px;
+  }
+  p, li {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink);
+  }
+  p.muted { color: var(--muted); }
+  ul { padding-left: 20px; margin: 0 0 16px; }
+  li { margin-bottom: 8px; }
+  a.inline { color: var(--soon); text-decoration: underline; text-underline-offset: 2px; }
+
+  .faq-item { margin: 0 0 28px; }
+  .faq-item h2 { margin: 0 0 8px; font-size: 17px; }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--soon);
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 12px 22px;
+    border-radius: 10px;
+    text-decoration: none;
+  }
+
+  footer {
+    padding: 28px 0 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: var(--muted);
+    border-top: 1px solid var(--rule);
+  }
+</style>
+
+<div class="wrap">
+  <nav class="top">
+    <a class="wordmark" href="/">
+      <span class="dots"><span></span><span></span><span></span></span>
+      Subnotes
+    </a>
+    <a class="nav-back" href="/">&larr; Back home</a>
+  </nav>
+
+  <main class="legal">
+    <div class="eyebrow">Coming soon</div>
+    <h1>Subnotes for Claude&nbsp;Code</h1>
+
+    <div class="tldr">
+      <div class="tag">In short</div>
+      <p>A plugin that lets Claude Code read the notebooks you choose to
+      connect, and add tasks to them — so &ldquo;let's put that on the
+      backlog&rdquo; lands in your notebook instead of dying with the
+      conversation. It isn't available yet.</p>
+    </div>
+
+    <h2>What it will do</h2>
+    <p>Ask what's on a notebook, or what to pick up next. Say &ldquo;put that on
+    the backlog&rdquo; mid-conversation and it goes to the right notebook and
+    the right section, without breaking your train of thought.</p>
+
+    <h2>Two rules it keeps</h2>
+    <ul>
+      <li><strong>It only ever adds.</strong> Nothing can be edited, deleted,
+      completed, reordered or renamed. A write that only adds cannot lose
+      work.</li>
+      <li><strong>Only notebooks you connect are visible.</strong> Everything
+      else is never written out at all, so it can't be read — invisible, not
+      merely hidden.</li>
+    </ul>
+
+    <h2>What you'll need</h2>
+    <p>Subnotes 1.4 or later, on a Mac, and Claude Code. Connecting a notebook
+    is a right-click away: choose <strong>Connect to Claude&nbsp;Code</strong>.
+    If you've already done that, nothing is broken — the other half just isn't
+    out yet.</p>
+
+    <p class="muted">This page will carry the install link when the plugin
+    ships.</p>
+  </main>
+
+  <footer>
+    <span>&copy; Subnotes</span>
+    <a class="nav-back" href="/support.html">Support</a>
+  </footer>
+</div>
