@@ -222,13 +222,43 @@
     </ul>
 
     <h2>What you'll need</h2>
-    <p>Subnotes 1.4 or later, on a Mac, and Claude Code. Connecting a notebook
-    is a right-click away: choose <strong>Connect to Claude&nbsp;Code</strong>.
-    If you've already done that, nothing is broken — the other half just isn't
-    out yet.</p>
+    <p>Subnotes 1.4 or later, on a Mac, and Claude Code. Open
+    <strong>Settings</strong> in Subnotes (<strong>&#8984;,</strong>) and turn
+    on the notebooks you want Claude to see — or right-click a single notebook
+    and choose <strong>Connect to Claude&nbsp;Code</strong>. If you've already
+    done that, nothing is broken — the other half just isn't out yet.</p>
 
     <p class="muted">This page will carry the install link when the plugin
     ships.</p>
+
+    <!-- ===================================================================
+         READY TO PUBLISH, the day the plugin goes live. Swap this in for the
+         "Coming soon" eyebrow, the "It isn't available yet" sentence in the
+         tldr, and the muted "This page will carry the install link" line
+         above. Nothing else on the page needs to change.
+
+         Written in advance deliberately: the app's own "Show Me How" button
+         opens this page, and that URL ships inside a binary — so this page
+         is the only part of the launch that can be corrected the same day.
+         Nothing builds it, reviews it or tests it, which is exactly how it
+         would otherwise be the last thing anyone remembers.
+
+         The manual instructions come FIRST and are not conditional on the
+         directory listing: adding the marketplace by repo works whether or
+         not claude-community has accepted the plugin, so the page never
+         depends on someone else's review queue. Add a directory link above
+         them if and when the listing appears; do not replace them with it.
+
+    <h2>Installing it</h2>
+    <p>In Claude Code, add the marketplace and install the plugin:</p>
+    <pre><code>/plugin marketplace add rafrafgit/subnotes-plugin
+/plugin install subnotes@Subnotes</code></pre>
+    <p>Then say &ldquo;put that on the backlog&rdquo; in any conversation, or
+    run <code>/subnotes:help</code> to see what's connected.</p>
+    <p class="muted">Nothing leaves your Mac. The plugin reads files Subnotes
+    writes inside its own app container, and writes tasks back the same way —
+    there is no account, no server and no network call.</p>
+         =================================================================== -->
   </main>
 
   <footer>
