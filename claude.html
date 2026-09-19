@@ -293,9 +293,21 @@
     <p>In Claude Code, add the marketplace and install the plugin:</p>
     <pre><code>/plugin marketplace add rafrafgit/subnotes-plugin
 /plugin install subnotes@Subnotes</code></pre>
-    <p>Then just say it in any conversation — no command needed. Or run
+    <p>Then give Claude Code <strong>Full Disk Access</strong> in <strong>System
+    Settings &rarr; Privacy &amp; Security &rarr; Full Disk Access</strong>, and
+    restart it. macOS keeps one app&rsquo;s files out of reach of another, so
+    without it the plugin can see that the Subnotes folder exists but
+    can&rsquo;t open anything in it, and every command fails with a permission
+    error.</p>
+    <p>Grant it to whichever app is actually running Claude Code — your
+    terminal (Terminal, iTerm, Ghostty…), or the Claude desktop app. The grant
+    doesn&rsquo;t carry between apps, so running from a terminal you
+    haven&rsquo;t granted looks exactly like a plugin that stopped working on
+    its own.</p>
+    <p>After that, just say it in any conversation — no command needed. Or run
     <code>/subnotes:help</code> to see what's connected, and
     <code>/subnotes:add</code> to capture something straight away.</p>
+
     <h2>Connecting your notebooks</h2>
     <p>Nothing is visible to Claude until you say so. Open
     <strong>Settings</strong> in Subnotes (<strong>&#8984;,</strong>) and turn
