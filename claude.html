@@ -160,6 +160,54 @@
   li { margin-bottom: 8px; }
   a.inline { color: var(--soon); text-decoration: underline; text-underline-offset: 2px; }
 
+  /* The install block had no styling at all — it inherited the browser
+     default, which on a phone pushes the whole page sideways rather than
+     wrapping, since a slash command has no spaces to break at. Scrolling the
+     block itself is the fix; the page never scrolls horizontally. */
+  pre {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin: 0 0 16px;
+    overflow-x: auto;
+  }
+  pre code {
+    font-size: 13.5px;
+    line-height: 1.7;
+    white-space: pre;
+    color: var(--ink);
+  }
+  /* Inline code (a command named mid-sentence) reads as a word, not a block:
+     no border, just enough tint to separate it from the prose around it. */
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 13.5px;
+    background: var(--card);
+    border-radius: 5px;
+    padding: 1px 5px;
+  }
+  pre code { background: none; padding: 0; }
+
+  .example {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-left: 3px solid var(--soon);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 0 0 12px;
+  }
+  .example p { margin: 0; }
+  .example .said {
+    font-size: 15.5px;
+    line-height: 1.55;
+  }
+  .example .then {
+    font-size: 13.5px;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
   .faq-item { margin: 0 0 28px; }
   .faq-item h2 { margin: 0 0 8px; font-size: 17px; }
 
@@ -210,6 +258,24 @@
     the backlog&rdquo; mid-conversation and it goes to the right notebook and
     the right section, without breaking your train of thought.</p>
 
+    <h2>What you'd actually say</h2>
+    <div class="example">
+      <p class="said">&ldquo;Add a task to fix the login redirect.&rdquo;</p>
+      <p class="then">Lands in the notebook you're working in, under the
+      section it belongs to.</p>
+    </div>
+    <div class="example">
+      <p class="said">&ldquo;What's on the Kitchen Remodel notebook?&rdquo;</p>
+      <p class="then">Reads it back — tasks, sections and what's marked
+      Next.</p>
+    </div>
+    <div class="example">
+      <p class="said">&ldquo;We should handle the empty state too — put that on
+      the backlog.&rdquo;</p>
+      <p class="then">Captured mid-conversation, without stopping to open
+      an app.</p>
+    </div>
+
     <h2>Two rules it keeps</h2>
     <ul>
       <li><strong>It only ever adds.</strong> Nothing can be edited, deleted,
@@ -221,17 +287,21 @@
     </ul>
 
     <h2>What you'll need</h2>
-    <p>Subnotes 1.4 or later, on a Mac, and Claude Code. Open
-    <strong>Settings</strong> in Subnotes (<strong>&#8984;,</strong>) and turn
-    on the notebooks you want Claude to see — or right-click a single notebook
-    and choose <strong>Connect to Claude&nbsp;Code</strong>.</p>
+    <p>Subnotes 1.4 or later, on a Mac, and Claude Code.</p>
 
     <h2>Installing it</h2>
     <p>In Claude Code, add the marketplace and install the plugin:</p>
     <pre><code>/plugin marketplace add rafrafgit/subnotes-plugin
 /plugin install subnotes@Subnotes</code></pre>
-    <p>Then say &ldquo;put that on the backlog&rdquo; in any conversation, or
-    run <code>/subnotes:help</code> to see what's connected.</p>
+    <p>Then just say it in any conversation — no command needed. Or run
+    <code>/subnotes:help</code> to see what's connected, and
+    <code>/subnotes:add</code> to capture something straight away.</p>
+    <h2>Connecting your notebooks</h2>
+    <p>Nothing is visible to Claude until you say so. Open
+    <strong>Settings</strong> in Subnotes (<strong>&#8984;,</strong>) and turn
+    on the notebooks you want Claude to see — or right-click a single notebook
+    and choose <strong>Connect to Claude&nbsp;Code</strong>.</p>
+
     <p class="muted">Nothing leaves your Mac. The plugin reads files Subnotes
     writes inside its own app container, and writes tasks back the same way —
     there is no account, no server and no network call.</p>

@@ -530,6 +530,16 @@
     margin: 0;
     max-width: 42ch;
   }
+  /* Only the Claude Code row carries a link in its paragraph. Blue and
+     underlined rather than inheriting the muted body color, which would
+     leave it looking like ordinary text that happens to be clickable. */
+  .benefit p a.inline {
+    color: var(--soon);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    white-space: nowrap;
+  }
   /* The shot stands ON the panel's bottom edge rather than floating inside
      it: only the top corners are rounded, so a screen that continues past the
      crop reads as continuing past the panel, not as an image cut short. */
@@ -766,6 +776,24 @@
       </div>
     </div>
 
+    <!-- Claude Code sits after the four core rows, not among them: it's the
+         only one that isn't about the app on its own, and putting it earlier
+         would make the page look like it's for developers, which the audience
+         isn't (plain-text thinkers, not "creators"). no-shot for the same
+         reason as the row below — a screenshot of a conversation shows
+         nothing a sentence doesn't say faster. -->
+    <div class="benefit no-shot">
+      <div>
+        <h2>
+          <span class="tag"><span class="dot" style="background: var(--soon);"></span>Works with Claude Code</span>
+          <span class="claim">Say &ldquo;put that on the backlog&rdquo; and it lands in your notes</span>
+        </h2>
+        <p>Connect the notebooks you choose and Claude Code can read them and add
+          tasks — it can never edit or delete anything.
+          <a class="inline" href="/claude.html">How it works &rarr;</a></p>
+      </div>
+    </div>
+
     <!-- No screenshot on this row, deliberately. The claim answers an objection
          — "will I be able to get out again?" — and absence of lock-in is not a
          thing a screenshot can show. It used to carry the Mac window as
@@ -789,6 +817,7 @@
     <span class="badge">iPhone, iPad &amp; Mac</span>
     <span class="badge">Always plain text</span>
     <span class="badge">Markdown import / export</span>
+    <span class="badge">Works with Claude Code</span>
   </div>
 
   
