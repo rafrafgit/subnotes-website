@@ -1,6 +1,6 @@
 <title>Claude Code — Subnotes</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Connect your Subnotes notebooks to Claude Code — read them, and add tasks without leaving the conversation.">
+<meta name="description" content="Turn Claude Code into an assistant that works from your Subnotes notebooks: it checks them against your goals, tells you what's due, and does the work it can.">
 <link rel="canonical" href="https://subnotes.app/claude.html">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='12' cy='32' r='8' fill='%2334C759'/%3E%3Ccircle cx='32' cy='32' r='8' fill='%230A7CFF'/%3E%3Ccircle cx='52' cy='32' r='8' fill='%238E8E93'/%3E%3C/svg%3E">
 <style>
@@ -247,28 +247,45 @@
 
     <div class="tldr">
       <div class="tag">In short</div>
-      <p>A plugin that lets Claude Code read the notebooks you choose to
-      connect, and add tasks to them — so &ldquo;let's put that on the
-      backlog&rdquo; lands in your notebook instead of dying with the
-      conversation.</p>
+      <p>A plugin that turns Claude Code into an assistant working from your
+      notes. It checks your notebooks against your goals, tells you what&rsquo;s
+      due, does the work it can, and remembers what you&rsquo;ve told it.</p>
     </div>
 
     <h2>What it does</h2>
-    <p>Ask what's on a notebook, or what to pick up next. Say &ldquo;put that on
-    the backlog&rdquo; mid-conversation and it goes to the right notebook and
-    the right section, without breaking your train of thought.</p>
+    <ul>
+      <li><strong>Starts from your goals.</strong> Write your goals in the Goals
+      notebook. Claude checks whether each one has a plan that can get there,
+      and whether that plan is working.</li>
+      <li><strong>Reviews your notebooks.</strong> Once a day it looks at what
+      changed and raises what&rsquo;s worth talking about, then adds a next
+      step once you agree.</li>
+      <li><strong>Does the work.</strong> It takes your Today and Next tasks,
+      does the ones it can (code, drafts, research), and lines up the ones
+      that need you.</li>
+      <li><strong>Reads your journal.</strong> What you write in the Journal
+      notebook becomes context, so you only say it once.</li>
+      <li><strong>Learns from you.</strong> When you correct it or wave a
+      point off, it remembers why, and the next run is better.</li>
+      <li><strong>Still captures.</strong> Say &ldquo;put that on the
+      backlog&rdquo; and it goes into the right notebook.</li>
+    </ul>
 
     <h2>What you'd actually say</h2>
     <div class="example">
-      <p class="said">&ldquo;Add a task to fix the login redirect.&rdquo;</p>
-      <p class="then">Lands in the notebook you're working in, under the
-      section it belongs to.</p>
+      <p class="said"><code>/subnotes:run</code></p>
+      <p class="then">&ldquo;A review is due: Kitchen Remodel changed since
+      yesterday &mdash; starting it.&rdquo; Then it talks through what it
+      found, one point at a time.</p>
     </div>
+
     <div class="example">
-      <p class="said">&ldquo;What's on the Kitchen Remodel notebook?&rdquo;</p>
-      <p class="then">Reads it back — tasks, sections and what's marked
-      Next.</p>
+      <p class="said">&ldquo;What should I work on next?&rdquo;</p>
+      <p class="then">Sorts your Today and Next tasks into what it can do now,
+      what needs your input, and what only you can do &mdash; and starts on
+      the first.</p>
     </div>
+
     <div class="example">
       <p class="said">&ldquo;We should handle the empty state too — put that on
       the backlog.&rdquo;</p>
